@@ -61,7 +61,7 @@ Les informations partagées par toutes les pages sont dans **`assets/js/data.js`
 - [ ] **Horaires** : `shop.hours` (0 = dimanche). Ils ont été relevés sur PagesJaunes ; à vérifier. Le statut « ouvert / fermé » et les créneaux de retrait en découlent. Le tableau de la section « Nous trouver » de l’accueil est aussi écrit en dur dans `index.html`.
 - [ ] **Prix au kilo** : champ `price` de chaque fromage. Ce sont des **prix indicatifs** à remplacer par les vrais tarifs. Idem pour les à-côtés (`EXTRAS`) et le prix du fromage à raclette (`RACLETTE_PRICE`) dans `initOrder` (`assets/js/app.js`).
 - [ ] **Fromages et recettes** : ajouter, retirer ou modifier des entrées dans `cheeses` et `recipes`. Les pages se mettent à jour seules.
-- [ ] **Photos** : remplacer les photos d’illustration (`assets/photos/`, voir `CREDITS.md`) par vos propres photos, en gardant deux tailles : 1400 px (`nom.jpg`) et 640 px (`nom-s.jpg`).
+- [ ] **Photos** : remplacer les photos par vos propres photos si vous le souhaitez, en gardant deux tailles : 1400 px (`nom.jpg`) et 640 px (`nom-s.jpg`). Le Murol et la tomme fraîche n’ont pas encore de photo (`photo: null` dans `data.js`) : leur fiche affiche le dessin en grand.
 - [ ] **En-tête et pied de page** : ils sont recopiés dans les quatre pages HTML ; une modification doit être faite dans chacune.
 - [ ] **Image de partage** : dans `<head>`, remplacer `assets/img/og-image.jpg` par l’adresse complète une fois le site en ligne.
 - [ ] **Mentions légales** : obligatoires pour un site professionnel en France (raison sociale, SIRET, hébergeur…).
@@ -88,4 +88,4 @@ assets/img/             favicon, icône iOS, image de partage, grain
 
 - Animations : [GSAP](https://gsap.com) (licence « Standard No Charge », utilisation commerciale gratuite) et [Lenis](https://github.com/darkroomengineering/lenis) (MIT).
 - Polices : Instrument Serif, Courier Prime et Work Sans, sous licence SIL Open Font License (fichiers `OFL-*.txt` dans `assets/fonts/`). Elles sont hébergées avec le site : aucune requête vers Google Fonts, ce qui simplifie la conformité RGPD.
-- Photos : [Pexels](https://www.pexels.com) (licence Pexels, usage commercial gratuit), liste dans `assets/photos/CREDITS.md`.
+- Photos : [Wikimedia Commons](https://commons.wikimedia.org) et [Flickr](https://www.flickr.com) (licences Creative Commons, auteur et licence affichés sous chaque photo), et [Pexels](https://www.pexels.com) (licence Pexels). Liste complète dans `assets/photos/CREDITS.md`.

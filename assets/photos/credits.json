@@ -1,10 +1,10 @@
 {
  "fr-saint-nectaire": {
-  "by": "julienfour",
-  "license": "CC0",
-  "url": "https://www.flickr.com/photos/156217834@N02/28369657039",
-  "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
-  "title": "Saint-nectaire"
+  "by": "Homer Ectus",
+  "license": "CC BY-SA 3.0",
+  "url": "https://commons.wikimedia.org/w/index.php?curid=27893588",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+  "title": "File:Saint-Nectaire.jpg"
  },
  "fr-cantal-jeune": {
   "by": "Silverman68",
@@ -96,5 +96,47 @@
   "url": "https://www.flickr.com/photos/58367355@N00/5939037091",
   "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
   "title": "w5 blue cheese & walnut salad"
+ },
+ "fr-laguiole": {
+  "by": "Coyau",
+  "license": "CC BY-SA 3.0",
+  "url": "https://commons.wikimedia.org/w/index.php?curid=38084570",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+  "title": "Laguiole (fromage) 01"
+ },
+ "fr-gaperon": {
+  "by": "Pierre-Yves Beaudouin",
+  "license": "CC BY-SA 4.0",
+  "url": "https://commons.wikimedia.org/w/index.php?curid=45473099",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+  "title": "File:WikiCheese - Gaperon 03.jpg"
+ },
+ "fr-bleu-auvergne": {
+  "by": "Pymouss",
+  "license": "CC BY-SA 4.0",
+  "url": "https://commons.wikimedia.org/w/index.php?curid=122563040",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+  "title": "Wikicheese Clermont-Ferrand - Bleu d'Auvergne 20220825-02"
+ },
+ "fr-bleu-causses": {
+  "by": "Coyau",
+  "license": "CC BY-SA 3.0",
+  "url": "https://commons.wikimedia.org/w/index.php?curid=43371584",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+  "title": "File:WikiCheese - Bleu des Causses - 20150619 - 001.jpg"
+ },
+ "fr-roquefort": {
+  "by": "Thesupermat",
+  "license": "CC BY-SA 4.0",
+  "url": "https://commons.wikimedia.org/w/index.php?curid=39709529",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+  "title": "File:Wikicheese - Roquefort - 20150417 - 003.jpg"
+ },
+ "croutes": {
+  "by": "Popo le Chien",
+  "license": "CC0",
+  "url": "https://commons.wikimedia.org/w/index.php?curid=37545028",
+  "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/deed.en/",
+  "title": "Croûte au fromage 2"
  }
 }

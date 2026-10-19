@@ -83,7 +83,7 @@ window.LB_DATA = {
     {
       id: 'laguiole', name: 'Laguiole', family: 'pressee', aop: true, price: 29,
       milk: 'Vache, lait cru', region: 'Plateau de l’Aubrac', aging: '4 mois minimum',
-      art: 'tall', colors: { rind: '#cdb48a', top: '#d9c39d', paste: '#fbe08c', spot: '#b89a68' }, photo: 'cave-meules',
+      art: 'tall', colors: { rind: '#cdb48a', top: '#d9c39d', paste: '#fbe08c', spot: '#b89a68' }, photo: 'fr-laguiole',
       short: 'Le cousin de l’Aubrac, à la pâte souple et parfumée.',
       text: 'Né dans les burons de l’Aubrac, le Laguiole est fabriqué avec le lait cru des vaches du plateau. Sa croûte épaisse est frappée du taureau et du nom « Laguiole ». Sa pâte, un peu plus souple que le Cantal, est très aromatique.',
       taste: 'Lactique, légèrement acidulé, notes d’herbe',
@@ -92,7 +92,7 @@ window.LB_DATA = {
     {
       id: 'murol', name: 'Murol', family: 'pressee', aop: false, price: 21,
       milk: 'Vache', region: 'Murol, Puy-de-Dôme', aging: 'Environ 5 semaines',
-      art: 'disc', colors: { rind: '#e7a46a', top: '#eeb67f', paste: '#fde6a4', spot: '#d78c55' }, photo: 'pate-molle',
+      art: 'disc', colors: { rind: '#e7a46a', top: '#eeb67f', paste: '#fde6a4', spot: '#d78c55' }, photo: null,
       short: 'Une couronne douce et fondante, percée en son centre.',
       text: 'Ce disque à la croûte orangée est reconnaissable entre tous : on retire son cœur, que l’on vend à part sous le nom de Murolait. Sa pâte est souple et douce, parfaite pour les enfants et les plateaux familiaux.',
       taste: 'Doux, lacté, légèrement noisette',
@@ -110,7 +110,7 @@ window.LB_DATA = {
     {
       id: 'bleu-auvergne', name: 'Bleu d’Auvergne', family: 'persillee', aop: true, price: 18,
       milk: 'Vache', region: 'Auvergne', aging: '4 semaines minimum',
-      art: 'ba', photo: 'bleu-bloc',
+      art: 'ba', photo: 'fr-bleu-auvergne',
       short: 'Plus corsé que la Fourme, franc et crémeux.',
       text: 'Né vers 1850, raconte-t-on, de l’idée d’Antoine Roussel d’ensemencer son caillé avec la moisissure du pain de seigle. Son persillage généreux lui donne une saveur franche, qui reste onctueuse.',
       taste: 'Franc, salin, crémeux',
@@ -119,7 +119,7 @@ window.LB_DATA = {
     {
       id: 'bleu-causses', name: 'Bleu des Causses', family: 'persillee', aop: true, price: 22,
       milk: 'Vache', region: 'Causses de l’Aveyron et du Lot', aging: '70 jours minimum en caves naturelles',
-      art: 'blue', colors: { rind: '#efe2c4', top: '#f5ebd4', paste: '#fbf0d6', vein: '#50665c' }, photo: 'bleu-trio',
+      art: 'blue', colors: { rind: '#efe2c4', top: '#f5ebd4', paste: '#fbf0d6', vein: '#50665c' }, photo: 'fr-bleu-causses',
       short: 'Affiné dans les caves naturelles des Causses.',
       text: 'Affiné dans des caves creusées dans le calcaire, où les fleurines soufflent un air frais et humide. Sa pâte, un peu plus ferme et jaune que celle des autres bleus, prend des notes profondes de cave.',
       taste: 'Puissant, légèrement salé, notes de cave',
@@ -128,7 +128,7 @@ window.LB_DATA = {
     {
       id: 'roquefort', name: 'Roquefort', family: 'persillee', aop: true, price: 34,
       milk: 'Brebis, lait cru', region: 'Roquefort-sur-Soulzon', aging: '90 jours minimum',
-      art: 'blue', colors: { rind: '#f4ecdc', top: '#faf4e8', paste: '#fdf8ec', vein: '#3f5a50' }, photo: 'bleu-planche',
+      art: 'blue', colors: { rind: '#f4ecdc', top: '#faf4e8', paste: '#fdf8ec', vein: '#3f5a50' }, photo: 'fr-roquefort',
       short: 'Le roi des bleus, au lait cru de brebis.',
       text: 'Fabriqué avec le lait cru des brebis Lacaune et affiné dans les caves de Roquefort-sur-Soulzon. Sa pâte blanche, fondante et très persillée offre une saveur intense et légèrement sucrée.',
       taste: 'Intense, salin, notes de noisette',
@@ -155,7 +155,7 @@ window.LB_DATA = {
     {
       id: 'gaperon', name: 'Gaperon', family: 'fleurie', aop: false, price: 22,
       milk: 'Vache', region: 'Limagne, Puy-de-Dôme', aging: '1 à 2 mois',
-      art: 'ga', photo: 'croute-fleurie',
+      art: 'ga', photo: 'fr-gaperon',
       short: 'Le dôme de la Limagne, à l’ail et au poivre.',
       text: 'Spécialité de la plaine de la Limagne, autrefois faite avec le babeurre (la « gape »). On reconnaît sa forme de dôme, nouée d’un raphia. L’ail et le poivre noir lui donnent un caractère unique.',
       taste: 'Ail, poivre, lait caillé',
@@ -182,7 +182,7 @@ window.LB_DATA = {
     {
       id: 'tomme-fraiche', name: 'Tomme fraîche', family: 'fraiche', aop: false, price: 13,
       milk: 'Vache', region: 'Aubrac & Cantal', aging: 'Non affinée',
-      art: 'fresh', colors: { rind: '#fbf3df', top: '#fdf8ec', paste: '#fdf8ec', spot: '#e9dcc0' }, photo: 'truffade',
+      art: 'fresh', colors: { rind: '#fbf3df', top: '#fdf8ec', paste: '#fdf8ec', spot: '#e9dcc0' }, photo: null,
       short: 'Le secret de la truffade et de l’aligot.',
       text: 'Un caillé frais, simplement pressé et non affiné. Fondu, il devient élastique et file sur des mètres : c’est l’ingrédient indispensable de l’aligot et de la truffade. Comptez environ 100 g par personne.',
       taste: 'Lait frais, légèrement acidulé',
@@ -380,75 +380,30 @@ window.LB_DATA = {
       "license": "CC BY 2.0",
       "url": "https://www.flickr.com/photos/22539273@N00/31771137746"
     },
-    "bleu-assiette": {
-      "by": "Pexels",
-      "license": "licence Pexels",
-      "url": "https://www.pexels.com/photo/15200488/"
-    },
-    "bleu-bloc": {
-      "by": "Pexels",
-      "license": "licence Pexels",
-      "url": "https://www.pexels.com/photo/6660061/"
-    },
-    "bleu-coin": {
-      "by": "Pexels",
-      "license": "licence Pexels",
-      "url": "https://www.pexels.com/photo/8250417/"
-    },
-    "bleu-planche": {
-      "by": "Pexels",
-      "license": "licence Pexels",
-      "url": "https://www.pexels.com/photo/4109943/"
-    },
-    "bleu-trio": {
-      "by": "Pexels",
-      "license": "licence Pexels",
-      "url": "https://www.pexels.com/photo/4109938/"
-    },
-    "brie-jambon": {
-      "by": "Pexels",
-      "license": "licence Pexels",
-      "url": "https://www.pexels.com/photo/5732759/"
-    },
-    "cave-coupe": {
-      "by": "Pexels",
-      "license": "licence Pexels",
-      "url": "https://www.pexels.com/photo/808196/"
-    },
-    "cave-meules": {
-      "by": "Pexels",
-      "license": "licence Pexels",
-      "url": "https://www.pexels.com/photo/14544601/"
-    },
-    "cave-selection": {
-      "by": "Pexels",
-      "license": "licence Pexels",
-      "url": "https://www.pexels.com/photo/10585043/"
-    },
-    "croute-fleurie": {
-      "by": "Pexels",
-      "license": "licence Pexels",
-      "url": "https://www.pexels.com/photo/11126267/"
-    },
     "croutes": {
-      "by": "Pexels",
-      "license": "licence Pexels",
-      "url": "https://www.pexels.com/photo/4559174/"
+      "by": "Popo le Chien",
+      "license": "CC0",
+      "url": "https://commons.wikimedia.org/w/index.php?curid=37545028"
     },
     "fondue": {
       "by": "Pexels",
       "license": "licence Pexels",
       "url": "https://www.pexels.com/photo/7491876/"
     },
-    "fondue-pain": {
-      "by": "Pexels",
-      "license": "licence Pexels",
-      "url": "https://www.pexels.com/photo/12664805/"
-    },
     "fondue-pain-2": {
       "by": "Pexels",
       "license": "licence Pexels",
       "url": "https://www.pexels.com/photo/12664810/"
+    },
+    "fr-bleu-auvergne": {
+      "by": "Pymouss",
+      "license": "CC BY-SA 4.0",
+      "url": "https://commons.wikimedia.org/w/index.php?curid=122563040"
+    },
+    "fr-bleu-causses": {
+      "by": "Coyau",
+      "license": "CC BY-SA 3.0",
+      "url": "https://commons.wikimedia.org/w/index.php?curid=43371584"
     },
     "fr-brie-meaux": {
       "by": "inra.dist",
@@ -485,30 +440,35 @@ window.LB_DATA = {
       "license": "CC BY-SA 2.0",
       "url": "https://www.flickr.com/photos/10559879@N00/544000085"
     },
+    "fr-gaperon": {
+      "by": "Pierre-Yves Beaudouin",
+      "license": "CC BY-SA 4.0",
+      "url": "https://commons.wikimedia.org/w/index.php?curid=45473099"
+    },
+    "fr-laguiole": {
+      "by": "Coyau",
+      "license": "CC BY-SA 3.0",
+      "url": "https://commons.wikimedia.org/w/index.php?curid=38084570"
+    },
     "fr-reblochon": {
       "by": "srboisvert",
       "license": "CC BY 2.0",
       "url": "https://www.flickr.com/photos/35034346289@N01/5901507691"
     },
+    "fr-roquefort": {
+      "by": "Thesupermat",
+      "license": "CC BY-SA 4.0",
+      "url": "https://commons.wikimedia.org/w/index.php?curid=39709529"
+    },
     "fr-saint-nectaire": {
-      "by": "julienfour",
-      "license": "CC0",
-      "url": "https://www.flickr.com/photos/156217834@N02/28369657039"
+      "by": "Homer Ectus",
+      "license": "CC BY-SA 3.0",
+      "url": "https://commons.wikimedia.org/w/index.php?curid=27893588"
     },
     "fr-salers": {
       "by": "inra.dist",
       "license": "CC BY 2.0",
       "url": "https://www.flickr.com/photos/135897188@N04/25605244751"
-    },
-    "fromage-vin": {
-      "by": "Pexels",
-      "license": "licence Pexels",
-      "url": "https://www.pexels.com/photo/8472746/"
-    },
-    "pate-molle": {
-      "by": "Pexels",
-      "license": "licence Pexels",
-      "url": "https://www.pexels.com/photo/6660243/"
     },
     "patranque": {
       "by": "Pexels",
@@ -519,21 +479,6 @@ window.LB_DATA = {
       "by": "Pexels",
       "license": "licence Pexels",
       "url": "https://www.pexels.com/photo/2992308/"
-    },
-    "plateau-charcuterie": {
-      "by": "Pexels",
-      "license": "licence Pexels",
-      "url": "https://www.pexels.com/photo/28572189/"
-    },
-    "plateau-chevre": {
-      "by": "Pexels",
-      "license": "licence Pexels",
-      "url": "https://www.pexels.com/photo/6660125/"
-    },
-    "plateau-rustique": {
-      "by": "Pexels",
-      "license": "licence Pexels",
-      "url": "https://www.pexels.com/photo/29068724/"
     },
     "salade-noix": {
       "by": "jules:stonesoup",
@@ -554,11 +499,6 @@ window.LB_DATA = {
       "by": "Pexels",
       "license": "licence Pexels",
       "url": "https://www.pexels.com/photo/18978636/"
-    },
-    "vaches-mont-dore": {
-      "by": "Pexels",
-      "license": "licence Pexels",
-      "url": "https://www.pexels.com/photo/18978688/"
     }
   },
 };

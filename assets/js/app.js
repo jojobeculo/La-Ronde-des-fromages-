@@ -371,9 +371,12 @@
     const addHref = `commande.html?add=${c.id}`;
     dlg.innerHTML = `<div class="sheet__inner" data-lenis-prevent>
       <form method="dialog"><button class="sheet__close" type="submit" aria-label="Fermer la fiche">×</button></form>
-      <figure class="sheet__photo">${photo(c.photo, c.name, '', '(max-width: 900px) 100vw, 45vw')}<figcaption>${photoCredit(c.photo)}</figcaption>
+      ${c.photo
+        ? `<figure class="sheet__photo">${photo(c.photo, c.name, '', '(max-width: 900px) 100vw, 45vw')}<figcaption>${photoCredit(c.photo)}</figcaption>
         <div class="sheet__art">${artSvg(c)}</div>
-      </figure>
+      </figure>`
+        // pas encore de photo fidèle de ce fromage : le dessin prend toute la place
+        : `<figure class="sheet__photo sheet__photo--art"><div class="sheet__art">${artSvg(c)}</div></figure>`}
       <div class="sheet__body">
         <p class="badge">${AST} ${c.aop ? 'AOP · ' : ''}${esc(D.families[c.family])}</p>
         <h2 class="h" id="cheese-sheet-title">${esc(c.name)}</h2>

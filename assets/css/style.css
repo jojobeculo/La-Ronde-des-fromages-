@@ -1055,7 +1055,7 @@ button.link { font: inherit; color: inherit; cursor: pointer; }
 @keyframes sheet-in { from { opacity: 0; transform: translateY(60px) scale(.94) rotate(-1.5deg); } to { opacity: 1; transform: none; } }
 @media (max-width: 800px) {
   .sheet__inner { grid-template-columns: 1fr; }
-  .sheet__photo img { max-height: 42vh; min-height: 0; }
+  .sheet__photo img { height: 42vh; max-height: 42vh; min-height: 220px; }
   .sheet__art { right: 14px; bottom: -30px; width: 40%; }
   .sheet__body { padding: 44px 20px 24px; }
 }
@@ -1371,3 +1371,5 @@ button.link { font: inherit; color: inherit; cursor: pointer; }
   background: rgba(255, 244, 236, .88); color: var(--ink); font-size: 11px; letter-spacing: .04em;
 }
 @media (max-width: 640px) { .recipe-view__credit { font-size: 10px; } }
+.sheet__photo--art { display: grid; place-items: center; min-height: 320px; }
+.sheet__photo--art .sheet__art { position: static; width: min(78%, 460px); }
