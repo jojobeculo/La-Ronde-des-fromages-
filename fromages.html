@@ -22,7 +22,7 @@
   <link rel="preload" href="assets/fonts/courier-prime-400-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="assets/css/style.css">
 
-  <script>document.documentElement.classList.replace('no-js', 'js');try{if(sessionStorage.getItem('lb-curtain'))document.documentElement.classList.add('is-arriving')}catch(e){}</script>
+  <script>document.documentElement.classList.replace('no-js', 'js');try{if(localStorage.getItem('lb-motion')==='reduced')document.documentElement.dataset.motion='reduced'}catch(e){}try{if(sessionStorage.getItem('lb-curtain'))document.documentElement.classList.add('is-arriving')}catch(e){}</script>
   <script src="assets/vendor/gsap.min.js" defer></script>
   <script src="assets/vendor/ScrollTrigger.min.js" defer></script>
   <script src="assets/vendor/SplitText.min.js" defer></script>
@@ -478,7 +478,8 @@
       <div class="footer__bottom">
         <p>© <span data-year>2026</span> Au Buron · Fromagerie artisanale à Chamalières · Photos Pexels</p>
         <p class="footer__made">Fait avec du lait, du temps et de la patience.</p>
-        <a class="footer__top" href="#top" data-magnetic aria-label="Retour en haut de page">
+        <button class="footer__motion link" type="button" data-motion-toggle aria-pressed="false">Réduire les animations</button>
+        <a class="footer__top" href="#contenu" data-magnetic aria-label="Retour en haut de page">
           <svg class="footer__top-ring" viewBox="0 0 100 100" aria-hidden="true">
             <defs><path id="top-circle" d="M50,50 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0"/></defs>
             <text font-family="'Courier Prime', monospace" font-size="10" font-weight="700" fill="#fff4ec"><textPath href="#top-circle" textLength="236" lengthAdjust="spacing">RETOUR EN HAUT • RETOUR EN HAUT • </textPath></text>

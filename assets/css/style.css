@@ -50,7 +50,7 @@
 /* ---------- Base ---------- */
 *, *::before, *::after { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; scroll-padding-top: var(--header-h); }
-@media (prefers-reduced-motion: no-preference) { html:not(.lenis) { scroll-behavior: smooth; } }
+html:not(.lenis):not([data-motion="reduced"]) { scroll-behavior: smooth; }
 body {
   margin: 0;
   background: var(--cream);
@@ -929,14 +929,13 @@ html.lenis, html.lenis body { height: auto; }
 }
 
 /* ---------- Mouvement réduit ---------- */
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: .001ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: .001ms !important;
-  }
-  .grain { display: none; }
+/* activé par le bouton « Réduire les animations » du pied de page */
+html[data-motion="reduced"] *, html[data-motion="reduced"] *::before, html[data-motion="reduced"] *::after {
+  animation-duration: .001ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: .001ms !important;
 }
+html[data-motion="reduced"] .grain { display: none; }
 
 /* =========================================================================
    Pages, fiches et commande
@@ -1359,3 +1358,7 @@ button.link { font: inherit; color: inherit; cursor: pointer; }
   20%, 60% { transform: rotate(-14deg); }
   40%, 80% { transform: rotate(14deg); }
 }
+
+/* ---------- Bouton animations du pied de page ---------- */
+.footer__motion { color: inherit; font: inherit; font-size: 13px; opacity: .8; }
+.footer__motion:hover, .footer__motion:focus-visible { opacity: 1; }

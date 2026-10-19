@@ -12,7 +12,8 @@
   const root = document.documentElement;
   const $ = (sel, ctx = document) => ctx.querySelector(sel);
   const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // les animations sont jouées partout ; le visiteur peut les réduire depuis le pied de page
+  const reduceMotion = document.documentElement.dataset.motion === 'reduced';
   const AST = '<svg class="ast" aria-hidden="true"><use href="#ast"/></svg>';
   const ARROW = '<svg class="icon-arrow" aria-hidden="true"><use href="#arrow"/></svg>';
 
@@ -93,6 +94,18 @@
   Promise.race([document.fonts ? document.fonts.ready : Promise.resolve(), new Promise((r) => setTimeout(r, 600))]).then(arrive);
   // retour arrière depuis le cache du navigateur : on retire le rideau
   window.addEventListener('pageshow', (e) => { if (e.persisted) root.classList.remove('curtain-in', 'is-arriving', 'curtain-out'); });
+
+  /* =======================================================================
+     Bouton « Réduire / Activer les animations » (pied de page)
+     ======================================================================= */
+  $$('[data-motion-toggle]').forEach((btn) => {
+    btn.textContent = reduceMotion ? 'Activer les animations' : 'Réduire les animations';
+    btn.setAttribute('aria-pressed', String(reduceMotion));
+    btn.addEventListener('click', () => {
+      try { localStorage.setItem('lb-motion', reduceMotion ? 'full' : 'reduced'); } catch (e) { /* rien */ }
+      location.reload();
+    });
+  });
 
   /* =======================================================================
      Retours au clic : le bouton s’enfonce puis rebondit, une onde et des

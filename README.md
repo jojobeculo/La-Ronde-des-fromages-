@@ -34,7 +34,7 @@ Le passage d’une page à l’autre est animé par un rideau. La pastille « Ou
 
 Partout : défilement fluide, curseur personnalisé avec libellés (« Goûter », « Miam », « Entrer »), boutons magnétiques, textes qui roulent au survol, titres révélés ligne par ligne, grain imprimé.
 
-Le site respecte le réglage système « réduire les animations » et reste entièrement lisible sans JavaScript.
+Les animations sont jouées sur tous les appareils, y compris quand l’ordinateur demande à réduire les animations (réglage fréquent sous Windows). Un bouton « Réduire les animations » dans le pied de page permet à chaque visiteur de les couper ; son choix est mémorisé. Le site reste entièrement lisible sans JavaScript.
 
 ## Voir le site en local
 

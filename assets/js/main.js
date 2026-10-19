@@ -10,7 +10,8 @@
   const $ = (sel, ctx = document) => ctx.querySelector(sel);
   const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
 
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // les animations sont jouées partout ; le visiteur peut les réduire depuis le pied de page
+  const reduceMotion = document.documentElement.dataset.motion === 'reduced';
   const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
   const hasGSAP = typeof window.gsap !== 'undefined' && typeof window.ScrollTrigger !== 'undefined';
   const motion = hasGSAP && !reduceMotion;
