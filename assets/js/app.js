@@ -862,14 +862,29 @@
       const subject = `Click & collect — ${new FormData(form).get('name')}`;
       location.href = `mailto:${D.shop.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
       doneEl.hidden = false;
+      doneEl.classList.remove('is-phone');
       doneEl.textContent = `Votre messagerie s’ouvre avec la commande. Envoyez le message : la fromagerie vous confirmera la commande. Sans réponse, appelez le ${D.shop.phone}.`;
     });
     $('[data-copy-order]').addEventListener('click', () => {
       if (!validate()) return;
       const text = orderText();
-      const ok = () => { doneEl.hidden = false; doneEl.textContent = `Commande copiée. Collez-la dans un message à la fromagerie, ou dictez-la par téléphone au ${D.shop.phone}.`; };
+      const ok = () => { doneEl.hidden = false; doneEl.classList.remove('is-phone'); doneEl.textContent = `Commande copiée. Collez-la dans un message à la fromagerie, ou dictez-la par téléphone au ${D.shop.phone}.`; };
       if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(ok, () => { window.prompt('Copiez votre commande :', text); });
       else window.prompt('Copiez votre commande :', text);
+    });
+
+    // par téléphone : pas besoin de remplir le formulaire, on affiche le numéro
+    // et le récapitulatif à dicter (le lien tel: ouvre l’appel sur mobile)
+    $('[data-phone-order]').addEventListener('click', () => {
+      const s = status();
+      const lines = cart.map((l) => `• ${l.title} — ${l.detail}`);
+      errorEl.hidden = true;
+      doneEl.hidden = false;
+      doneEl.classList.add('is-phone');
+      doneEl.textContent = [
+        `Appelez le ${D.shop.phone}${s.open ? ' : la boutique est ouverte.' : ` (${s.text.toLowerCase()}).`}`,
+        lines.length ? `À dicter :\n${lines.join('\n')}` : 'Dites-nous ce qui vous ferait plaisir, nous préparons tout pour votre passage.',
+      ].join('\n');
     });
 
     /* --- arrivées depuis les autres pages --- */

@@ -1332,3 +1332,30 @@ button.link { font: inherit; color: inherit; cursor: pointer; }
   border: 2px solid var(--ink);
   box-shadow: 0 6px 14px rgba(60, 66, 46, .3);
 }
+
+/* ---------- Manifeste : la ponctuation reste collée à sa pastille ---------- */
+.nowrap { white-space: nowrap; }
+
+/* ---------- Commande par téléphone ---------- */
+.phone-order {
+  display: flex; align-items: center; gap: 14px; margin-top: 4px;
+  padding: 14px 16px; border: 1px solid var(--ink); border-radius: var(--radius-btn);
+  color: var(--ink); text-decoration: none; background: var(--cream);
+  transition: background-color .3s var(--ease-out);
+}
+.phone-order:hover, .phone-order:focus-visible { background: var(--mustard); }
+.phone-order__icon {
+  flex: none; display: grid; place-items: center; width: 42px; height: 42px;
+  border-radius: 50%; background: var(--ink);
+}
+.phone-order__icon svg { width: 20px; height: 20px; fill: var(--cream); }
+.phone-order:hover .phone-order__icon svg { animation: phone-ring .6s ease-in-out; }
+.phone-order__text { display: grid; gap: 2px; }
+.phone-order__text span { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; }
+.phone-order__text strong { font: 400 clamp(26px, 2.6vw, 32px)/1.05 var(--font-display); letter-spacing: -0.01em; }
+.pickup__done.is-phone { white-space: pre-line; background: var(--mustard); }
+@keyframes phone-ring {
+  0%, 100% { transform: rotate(0); }
+  20%, 60% { transform: rotate(-14deg); }
+  40%, 80% { transform: rotate(14deg); }
+}
