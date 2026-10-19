@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="fr" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Recettes d’Auvergne — Le Buron</title>
+  <meta name="description" content="Truffade, aligot, fondue auvergnate, patranque, tarte poire et Fourme d’Ambert : les recettes du Buron, pas à pas.">
+  <meta name="theme-color" content="#fff4ec">
+
+  <!-- Partage sur les réseaux — ✏️ À PERSONNALISER : remplacez l’URL de l’image par l’adresse complète une fois le site en ligne -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:site_name" content="Le Buron">
+  <meta property="og:title" content="Recettes d’Auvergne — Le Buron">
+  <meta property="og:description" content="Les grands fromages d’Auvergne, choisis avec soin et coupés à la demande, à Chamalières aux portes de Clermont-Ferrand.">
+  <meta property="og:image" content="assets/img/og-image.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <link rel="preload" href="assets/fonts/instrument-serif-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/courier-prime-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <script>document.documentElement.classList.replace('no-js', 'js');try{if(sessionStorage.getItem('lb-curtain'))document.documentElement.classList.add('is-arriving')}catch(e){}</script>
+  <script src="assets/vendor/gsap.min.js" defer></script>
+  <script src="assets/vendor/ScrollTrigger.min.js" defer></script>
+  <script src="assets/vendor/SplitText.min.js" defer></script>
+  <script src="assets/vendor/lenis.min.js" defer></script>
+  <script src="assets/js/data.js" defer></script>
+  <script src="assets/js/app.js" defer></script>
+  <script src="assets/js/main.js" defer></script>
+
+</head>
+<body class="page-recettes">
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+
+  <!-- ============ Bibliothèque d’illustrations (réutilisées avec <use>) ============ -->
+  <svg class="sprite" width="0" height="0" aria-hidden="true" focusable="false">
+    <defs>
+      <linearGradient id="sky-grad" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#fff4ec"/>
+        <stop offset="1" stop-color="#f6e6d9"/>
+      </linearGradient>
+      <pattern id="lauze" width="14" height="24" patternUnits="userSpaceOnUse">
+        <rect width="14" height="24" fill="#3c422e"/>
+        <path d="M0,6 a7,7 0 0,0 14,0 M-7,18 a7,7 0 0,0 14,0 M7,18 a7,7 0 0,0 14,0" fill="none" stroke="#69714f" stroke-width="1.6"/>
+      </pattern>
+
+      <!-- Astérisque fleuri -->
+      <symbol id="ast" viewBox="-11 -11 22 22">
+        <g fill="currentColor">
+          <path id="ast-petal" d="M0,-1.2 C2.5,-4 2.5,-7.6 0,-10.6 C-2.5,-7.6 -2.5,-4 0,-1.2 Z"/>
+          <use href="#ast-petal" transform="rotate(45)"/>
+          <use href="#ast-petal" transform="rotate(90)"/>
+          <use href="#ast-petal" transform="rotate(135)"/>
+          <use href="#ast-petal" transform="rotate(180)"/>
+          <use href="#ast-petal" transform="rotate(225)"/>
+          <use href="#ast-petal" transform="rotate(270)"/>
+          <use href="#ast-petal" transform="rotate(315)"/>
+        </g>
+      </symbol>
+      <symbol id="arrow" viewBox="0 0 24 24">
+        <path d="M3,12 H20 M13,5 L20,12 L13,19" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </symbol>
+
+      <!-- Meule entamée vue de dessus + sa part -->
+      <symbol id="wheel-top" viewBox="-52 -52 104 104">
+        <path d="M0,0 L39.84,23 A46,46 0 1,1 39.84,-23 Z" fill="#e2c9a6" stroke="#3c422e" stroke-width="2.5" stroke-linejoin="round"/>
+        <path d="M0,0 L33.77,19.5 A39,39 0 1,1 33.77,-19.5 Z" fill="#fde17e" stroke="#3c422e" stroke-width="1.5" stroke-linejoin="round"/>
+        <g fill="#f1c64a"><circle cx="-14" cy="-12" r="3"/><circle cx="-22" cy="10" r="2.2"/><circle cx="4" cy="22" r="2.6"/><circle cx="-4" cy="-26" r="1.8"/><circle cx="-28" cy="-6" r="1.6"/></g>
+      </symbol>
+      <symbol id="wedge-top" viewBox="-52 -52 104 104">
+        <path d="M0,0 L39.84,-23 A46,46 0 0,1 39.84,23 Z" fill="#e2c9a6" stroke="#3c422e" stroke-width="2.5" stroke-linejoin="round"/>
+        <path d="M0,0 L33.77,-19.5 A39,39 0 0,1 33.77,19.5 Z" fill="#fde17e" stroke="#3c422e" stroke-width="1.5" stroke-linejoin="round"/>
+        <circle cx="22" cy="4" r="2.2" fill="#f1c64a"/>
+      </symbol>
+
+      <!-- Saint-Nectaire -->
+      <symbol id="sn-wheel" viewBox="0 0 240 180">
+        <path d="M22,78 L22,112 A88,30 0 0,0 198,112 L198,78 Z" fill="#d9bf9c" stroke="#3c422e" stroke-width="2.5" stroke-linejoin="round"/>
+        <ellipse cx="110" cy="78" rx="88" ry="30" fill="#e8d5b7" stroke="#3c422e" stroke-width="2.5"/>
+        <g fill="#fff4ec" stroke="#3c422e" stroke-width="1"><ellipse cx="62" cy="74" rx="7" ry="3"/><ellipse cx="152" cy="64" rx="9" ry="3.5"/><ellipse cx="132" cy="94" rx="6" ry="2.4"/><ellipse cx="48" cy="104" rx="5" ry="3"/><ellipse cx="176" cy="116" rx="6" ry="3.4"/><ellipse cx="100" cy="126" rx="5" ry="2.6"/></g>
+        <g fill="#fbd535"><circle cx="86" cy="90" r="2.6"/><circle cx="172" cy="82" r="2.2"/><circle cx="96" cy="62" r="1.8"/><circle cx="128" cy="124" r="2.4"/><circle cx="66" cy="118" r="2"/></g>
+        <ellipse cx="110" cy="77" rx="14" ry="5.5" fill="#9eef80" stroke="#3c422e" stroke-width="1.5"/>
+      </symbol>
+      <symbol id="sn-part" viewBox="0 0 240 180">
+        <path d="M222,142 Q232,120 206,114 L206,142 Q232,148 222,170 Z" fill="#d9bf9c" stroke="#3c422e" stroke-width="2.5" stroke-linejoin="round"/>
+        <path d="M146,134 L222,142 L222,170 L146,162 Z" fill="#fde17e"/>
+        <path d="M146,162 L222,170 M222,142 L222,170" stroke="#d9bf9c" stroke-width="6"/>
+        <path d="M146,134 L222,142" stroke="#d9bf9c" stroke-width="5"/>
+        <g fill="#f1c64a"><ellipse cx="175" cy="152" rx="4" ry="2.5"/><ellipse cx="198" cy="157" rx="3" ry="2"/><ellipse cx="160" cy="149" rx="2.5" ry="1.6"/></g>
+        <path d="M146,134 L222,142 L222,170 L146,162 Z" fill="none" stroke="#3c422e" stroke-width="2.5" stroke-linejoin="round"/>
+        <path d="M146,134 L206,114 Q232,120 222,142 Z" fill="#e8d5b7" stroke="#3c422e" stroke-width="2.5" stroke-linejoin="round"/>
+        <ellipse cx="200" cy="128" rx="5" ry="2" fill="#fff4ec" stroke="#3c422e" stroke-width="1"/>
+      </symbol>
+
+      <!-- Cantal -->
+      <symbol id="ca-wheel" viewBox="0 0 240 180">
+        <path d="M34,44 L34,142 A62,20 0 0,0 158,142 L158,44 Z" fill="#dccdaa" stroke="#3c422e" stroke-width="2.5" stroke-linejoin="round"/>
+        <g fill="#cdbb94"><ellipse cx="54" cy="84" rx="8" ry="5"/><ellipse cx="124" cy="122" rx="9" ry="5"/><ellipse cx="82" cy="136" rx="6" ry="3"/><ellipse cx="142" cy="74" rx="5" ry="7"/></g>
+        <text x="96" y="106" text-anchor="middle" font-family="'Courier Prime', monospace" font-size="13" font-weight="700" letter-spacing="2" fill="#3c422e" opacity=".35">CANTAL</text>
+        <ellipse cx="96" cy="44" rx="62" ry="20" fill="#e8dcc0" stroke="#3c422e" stroke-width="2.5"/>
+        <g fill="#d6c49d"><ellipse cx="74" cy="40" rx="8" ry="3"/><ellipse cx="120" cy="50" rx="10" ry="3"/></g>
+      </symbol>
+      <symbol id="ca-part" viewBox="0 0 240 180">
+        <path d="M212,124 Q222,108 194,102 L194,148 Q222,154 212,170 Z" fill="#dccdaa" stroke="#3c422e" stroke-width="2.5" stroke-linejoin="round"/>
+        <path d="M150,118 L212,124 L212,170 L150,164 Z" fill="#fbe49a"/>
+        <path d="M150,164 L212,170 M212,124 L212,170" stroke="#dccdaa" stroke-width="6"/>
+        <path d="M150,118 L212,124" stroke="#dccdaa" stroke-width="5"/>
+        <path d="M166,140 l8,1 M184,150 l10,1" stroke="#e9c96a" stroke-width="2" stroke-linecap="round"/>
+        <path d="M150,118 L212,124 L212,170 L150,164 Z" fill="none" stroke="#3c422e" stroke-width="2.5" stroke-linejoin="round"/>
+        <path d="M150,118 L194,102 Q222,108 212,124 Z" fill="#e8dcc0" stroke="#3c422e" stroke-width="2.5" stroke-linejoin="round"/>
+      </symbol>
+
+      <!-- Salers -->
+      <symbol id="sa-wheel" viewBox="0 0 240 180">
+        <path d="M32,42 L32,142 A66,21 0 0,0 164,142 L164,42 Z" fill="#d1ad7b" stroke="#3c422e" stroke-width="2.5" stroke-linejoin="round"/>
+        <g fill="#b9905c"><ellipse cx="52" cy="76" rx="9" ry="5"/><ellipse cx="140" cy="118" rx="10" ry="6"/><ellipse cx="76" cy="134" rx="7" ry="3.5"/><ellipse cx="150" cy="70" rx="5" ry="8"/><ellipse cx="104" cy="66" rx="4" ry="3"/></g>
+        <rect x="80" y="88" width="36" height="17" rx="2" fill="#3c422e"/>
+        <text x="98" y="100" text-anchor="middle" font-family="'Courier Prime', monospace" font-size="8.5" font-weight="700" letter-spacing="1" fill="#fff4ec">SALERS</text>
+        <ellipse cx="98" cy="42" rx="66" ry="21" fill="#dcbb8a" stroke="#3c422e" stroke-width="2.5"/>
+        <g fill="#c89f69"><ellipse cx="76" cy="38" rx="10" ry="3.4"/><ellipse cx="124" cy="48" rx="9" ry="3"/><ellipse cx="104" cy="32" rx="5" ry="2"/></g>
+      </symbol>
+      <symbol id="sa-part" viewBox="0 0 240 180">
+        <path d="M214,122 Q224,106 196,100 L196,148 Q224,154 214,170 Z" fill="#d1ad7b" stroke="#3c422e" stroke-width="2.5" stroke-linejoin="round"/>
+        <path d="M152,116 L214,122 L214,170 L152,164 Z" fill="#fbd77a"/>
+        <path d="M152,164 L214,170 M214,122 L214,170" stroke="#d1ad7b" stroke-width="8"/>
+        <path d="M152,116 L214,122" stroke="#d1ad7b" stroke-width="7"/>
+        <path d="M170,138 l6,1 M188,150 l9,1 M168,154 l5,0" stroke="#efbf4f" stroke-width="2" stroke-linecap="round"/>
+        <path d="M152,116 L214,122 L214,170 L152,164 Z" fill="none" stroke="#3c422e" stroke-width="2.5" stroke-linejoin="round"/>
+        <path d="M152,116 L196,100 Q224,106 214,122 Z" fill="#dcbb8a" stroke="#3c422e" stroke-width="2.5" stroke-linejoin="round"/>
+      </symbol>
+
+      <!-- Fourme d’Ambert -->
+      <symbol id="fa-wheel" viewBox="0 0 240 180">
+        <path d="M50,32 L50,150 A38,12.5 0 0,0 126,150 L126,32 Z" fill="#ebe3d1" stroke="#3c422e" stroke-width="2.5" stroke-linejoin="round"/>
+        <g fill="#fbd535"><circle cx="64" cy="62" r="3"/><circle cx="104" cy="96" r="2.4"/><circle cx="80" cy="134" r="3.2"/><circle cx="116" cy="58" r="2"/></g>
+        <g fill="#e9b98d"><circle cx="92" cy="76" r="3.6"/><circle cx="62" cy="108" r="2.6"/><circle cx="112" cy="128" r="2.8"/></g>
+        <g fill="#3c422e" opacity=".55"><circle cx="74" cy="90" r="1.2"/><circle cx="98" cy="118" r="1.2"/><circle cx="58" cy="140" r="1"/><circle cx="118" cy="84" r="1"/></g>
+        <ellipse cx="88" cy="32" rx="38" ry="12.5" fill="#f2ecdf" stroke="#3c422e" stroke-width="2.5"/>
+      </symbol>
+      <symbol id="fa-part" viewBox="0 0 240 180">
+        <path d="M136,146 L136,158 A42,14 0 0,0 220,158 L220,146 Z" fill="#ebe3d1" stroke="#3c422e" stroke-width="2.5" stroke-linejoin="round"/>
+        <ellipse cx="178" cy="146" rx="42" ry="14" fill="#e3d9c2" stroke="#3c422e" stroke-width="2.5"/>
+        <ellipse cx="178" cy="146" rx="37" ry="11.5" fill="#fbf0dc"/>
+        <g fill="#50665c"><path d="M158,143 q4,-3 7,0 q-2,4 -7,0 Z"/><path d="M184,140 q5,-2 7,2 q-4,3 -7,-2 Z"/><path d="M196,150 q4,-2 6,1 q-3,3 -6,-1 Z"/><path d="M170,151 q3,-2 5,1 q-2,2 -5,-1 Z"/></g>
+        <g fill="#7f9a8c"><circle cx="166" cy="146" r="2"/><circle cx="190" cy="146" r="1.8"/><circle cx="178" cy="139" r="1.6"/><circle cx="204" cy="144" r="1.5"/><circle cx="150" cy="148" r="1.4"/><circle cx="180" cy="154" r="1.6"/></g>
+      </symbol>
+
+      <!-- Bleu d’Auvergne -->
+      <symbol id="ba-wheel" viewBox="0 0 240 180">
+        <path d="M30,72 L30,118 A74,24 0 0,0 178,118 L178,72 Z" fill="#efe6d2" stroke="#3c422e" stroke-width="2.5" stroke-linejoin="round"/>
+        <g fill="#7f9a8c"><circle cx="50" cy="96" r="2.6"/><circle cx="96" cy="120" r="2"/><circle cx="146" cy="112" r="2.8"/><circle cx="164" cy="96" r="1.8"/></g>
+        <ellipse cx="104" cy="72" rx="74" ry="24" fill="#f6efdf" stroke="#3c422e" stroke-width="2.5"/>
+        <g fill="#7f9a8c"><circle cx="70" cy="68" r="3"/><circle cx="118" cy="62" r="2.4"/><circle cx="136" cy="80" r="3.2"/><circle cx="88" cy="84" r="2"/><circle cx="150" cy="66" r="1.8"/></g>
+        <g fill="#50665c"><circle cx="102" cy="72" r="1.6"/><circle cx="62" cy="78" r="1.4"/><circle cx="128" cy="70" r="1.4"/></g>
+      </symbol>
+      <symbol id="ba-part" viewBox="0 0 240 180">
+        <path d="M220,136 Q230,118 204,110 L204,144 Q230,152 220,170 Z" fill="#efe6d2" stroke="#3c422e" stroke-width="2.5" stroke-linejoin="round"/>
+        <path d="M144,128 L220,136 L220,170 L144,162 Z" fill="#fbf0dc"/>
+        <g fill="#50665c"><path d="M156,140 q5,-3 8,1 q-4,4 -8,-1 Z"/><path d="M178,146 q6,-2 8,3 q-5,3 -8,-3 Z"/><path d="M200,142 q4,-3 7,1 q-3,3 -7,-1 Z"/><path d="M166,154 q4,-2 6,2 q-3,2 -6,-2 Z"/><path d="M196,158 q5,-2 7,2 q-4,2 -7,-2 Z"/></g>
+        <g fill="#7f9a8c"><circle cx="170" cy="140" r="2"/><circle cx="190" cy="152" r="2.2"/><circle cx="208" cy="152" r="1.6"/><circle cx="154" cy="152" r="1.6"/><circle cx="182" cy="160" r="1.4"/></g>
+        <path d="M144,162 L220,170 M220,136 L220,170" stroke="#efe6d2" stroke-width="4"/>
+        <path d="M144,128 L220,136 L220,170 L144,162 Z" fill="none" stroke="#3c422e" stroke-width="2.5" stroke-linejoin="round"/>
+        <path d="M144,128 L204,110 Q230,118 220,136 Z" fill="#f6efdf" stroke="#3c422e" stroke-width="2.5" stroke-linejoin="round"/>
+        <circle cx="196" cy="122" r="2.4" fill="#7f9a8c"/>
+      </symbol>
+
+      <!-- Gaperon -->
+      <symbol id="ga-wheel" viewBox="0 0 240 180">
+        <path d="M36,150 C36,84 66,42 102,42 C138,42 168,84 168,150 C146,160 58,160 36,150 Z" fill="#f7f0e2" stroke="#3c422e" stroke-width="2.5" stroke-linejoin="round"/>
+        <g fill="#3c422e"><circle cx="70" cy="100" r="1.4"/><circle cx="84" cy="74" r="1.2"/><circle cx="124" cy="68" r="1.3"/><circle cx="142" cy="98" r="1.4"/><circle cx="74" cy="132" r="1.3"/><circle cx="150" cy="130" r="1.2"/><circle cx="58" cy="122" r="1"/><circle cx="130" cy="140" r="1.4"/><circle cx="62" cy="88" r="1"/><circle cx="146" cy="114" r="1"/></g>
+        <path d="M102,42 C90,72 86,112 90,156 M102,42 C114,72 118,112 114,156" fill="none" stroke="#3c422e" stroke-width="7" stroke-linecap="round"/>
+        <path d="M102,42 C90,72 86,112 90,156 M102,42 C114,72 118,112 114,156" fill="none" stroke="#fbd535" stroke-width="3.6" stroke-linecap="round"/>
+        <path d="M102,42 C88,22 72,28 82,40 C88,47 97,46 102,42 Z M102,42 C116,22 132,28 122,40 C116,47 107,46 102,42 Z" fill="#fbd535" stroke="#3c422e" stroke-width="2" stroke-linejoin="round"/>
+        <path d="M102,42 L92,60 M102,42 L112,60" stroke="#3c422e" stroke-width="2.4" stroke-linecap="round"/>
+      </symbol>
+      <symbol id="ga-part" viewBox="0 0 240 180">
+        <path d="M148,170 L148,140 C148,124 164,112 184,112 C206,112 222,130 226,170 Z" fill="#fdf5e4"/>
+        <path d="M148,140 C148,124 164,112 184,112 C206,112 222,130 226,170" fill="none" stroke="#f7f0e2" stroke-width="7"/>
+        <g fill="#3c422e"><circle cx="168" cy="140" r="1.6"/><circle cx="190" cy="132" r="1.4"/><circle cx="206" cy="150" r="1.6"/><circle cx="176" cy="158" r="1.3"/><circle cx="160" cy="156" r="1.2"/><circle cx="196" cy="160" r="1.4"/></g>
+        <g fill="#fff4ec" stroke="#3c422e" stroke-width="1"><ellipse cx="182" cy="146" rx="3" ry="2"/><ellipse cx="208" cy="138" rx="2.4" ry="1.6"/></g>
+        <path d="M148,170 L148,140 C148,124 164,112 184,112 C206,112 222,130 226,170 Z" fill="none" stroke="#3c422e" stroke-width="2.5" stroke-linejoin="round"/>
+      </symbol>
+
+
+      <!-- Dessins génériques, colorés par les variables --rind, --top, --paste, --spot, --vein -->
+      <symbol id="tall-wheel" viewBox="0 0 240 180">
+        <path d="M34,44 L34,142 A62,20 0 0,0 158,142 L158,44 Z" style="fill:var(--rind,#dccdaa)" stroke="#3c422e" stroke-width="2.5" stroke-linejoin="round"/>
+        <g style="fill:var(--spot,#cdbb94)"><ellipse cx="54" cy="84" rx="8" ry="5"/><ellipse cx="124" cy="122" rx="9" ry="5"/><ellipse cx="82" cy="136" rx="6" ry="3"/><ellipse cx="142" cy="74" rx="5" ry="7"/></g>
+        <ellipse cx="96" cy="44" rx="62" ry="20" style="fill:var(--top,#e8dcc0)" stroke="#3c422e" stroke-width="2.5"/>
+      </symbol>
+      <symbol id="tall-part" viewBox="0 0 240 180">
+        <path d="M212,124 Q222,108 194,102 L194,148 Q222,154 212,170 Z" style="fill:var(--rind,#dccdaa)" stroke="#3c422e" stroke-width="2.5" stroke-linejoin="round"/>
+        <path d="M150,118 L212,124 L212,170 L150,164 Z" style="fill:var(--paste,#fbe49a)"/>
+        <path d="M150,164 L212,170 M212,124 L212,170" style="stroke:var(--rind,#dccdaa)" stroke-width="6"/>
+        <path d="M150,118 L212,124 L212,170 L150,164 Z" fill="none" stroke="#3c422e" stroke-width="2.5" stroke-linejoin="round"/>
+        <path d="M150,118 L194,102 Q222,108 212,124 Z" style="fill:var(--top,#e8dcc0)" stroke="#3c422e" stroke-width="2.5" stroke-linejoin="round"/>
+      </symbol>
+      <symbol id="disc-wheel" viewBox="0 0 240 180">
+        <path d="M22,78 L22,112 A88,30 0 0,0 198,112 L198,78 Z" style="fill:var(--rind,#d9bf9c)" stroke="#3c422e" stroke-width="2.5" stroke-linejoin="round"/>
+        <ellipse cx="110" cy="78" rx="88" ry="30" style="fill:var(--top,#e8d5b7)" stroke="#3c422e" stroke-width="2.5"/>
+        <g style="fill:var(--spot,#c9a978)"><ellipse cx="70" cy="74" rx="8" ry="3"/><ellipse cx="150" cy="66" rx="9" ry="3.5"/><ellipse cx="130" cy="94" rx="6" ry="2.4"/><ellipse cx="60" cy="112" rx="6" ry="3"/><ellipse cx="170" cy="116" rx="6" ry="3.4"/></g>
+      </symbol>
+      <symbol id="disc-part" viewBox="0 0 240 180">
+        <path d="M222,142 Q232,120 206,114 L206,142 Q232,148 222,170 Z" style="fill:var(--rind,#d9bf9c)" stroke="#3c422e" stroke-width="2.5" stroke-linejoin="round"/>
+        <path d="M146,134 L222,142 L222,170 L146,162 Z" style="fill:var(--paste,#fde17e)"/>
+        <path d="M146,162 L222,170 M222,142 L222,170" style="stroke:var(--rind,#d9bf9c)" stroke-width="6"/>
+        <path d="M146,134 L222,142 L222,170 L146,162 Z" fill="none" stroke="#3c422e" stroke-width="2.5" stroke-linejoin="round"/>
+        <path d="M146,134 L206,114 Q232,120 222,142 Z" style="fill:var(--top,#e8d5b7)" stroke="#3c422e" stroke-width="2.5" stroke-linejoin="round"/>
+      </symbol>
+      <symbol id="blue-wheel" viewBox="0 0 240 180">
+        <path d="M30,72 L30,118 A74,24 0 0,0 178,118 L178,72 Z" style="fill:var(--rind,#efe6d2)" stroke="#3c422e" stroke-width="2.5" stroke-linejoin="round"/>
+        <ellipse cx="104" cy="72" rx="74" ry="24" style="fill:var(--top,#f6efdf)" stroke="#3c422e" stroke-width="2.5"/>
+        <g style="fill:var(--vein,#50665c)" opacity=".7"><circle cx="70" cy="68" r="3"/><circle cx="118" cy="62" r="2.4"/><circle cx="136" cy="80" r="3.2"/><circle cx="88" cy="84" r="2"/><circle cx="56" cy="100" r="2.4"/><circle cx="150" cy="108" r="2.6"/></g>
+      </symbol>
+      <symbol id="blue-part" viewBox="0 0 240 180">
+        <path d="M220,136 Q230,118 204,110 L204,144 Q230,152 220,170 Z" style="fill:var(--rind,#efe6d2)" stroke="#3c422e" stroke-width="2.5" stroke-linejoin="round"/>
+        <path d="M144,128 L220,136 L220,170 L144,162 Z" style="fill:var(--paste,#fbf0dc)"/>
+        <g style="fill:var(--vein,#50665c)"><path d="M156,140 q5,-3 8,1 q-4,4 -8,-1 Z"/><path d="M178,146 q6,-2 8,3 q-5,3 -8,-3 Z"/><path d="M200,142 q4,-3 7,1 q-3,3 -7,-1 Z"/><path d="M166,154 q4,-2 6,2 q-3,2 -6,-2 Z"/><path d="M196,158 q5,-2 7,2 q-4,2 -7,-2 Z"/><circle cx="186" cy="136" r="2"/><circle cx="152" cy="152" r="1.6"/></g>
+        <path d="M144,128 L220,136 L220,170 L144,162 Z" fill="none" stroke="#3c422e" stroke-width="2.5" stroke-linejoin="round"/>
+        <path d="M144,128 L204,110 Q230,118 220,136 Z" style="fill:var(--top,#f6efdf)" stroke="#3c422e" stroke-width="2.5" stroke-linejoin="round"/>
+      </symbol>
+      <symbol id="soft-wheel" viewBox="0 0 240 180">
+        <path d="M14,92 L14,108 A96,30 0 0,0 206,108 L206,92 Z" style="fill:var(--rind,#f5efe2)" stroke="#3c422e" stroke-width="2.5" stroke-linejoin="round"/>
+        <ellipse cx="110" cy="92" rx="96" ry="30" style="fill:var(--top,#faf6ec)" stroke="#3c422e" stroke-width="2.5"/>
+        <g style="fill:var(--spot,#d9b98c)" opacity=".6"><ellipse cx="70" cy="88" rx="10" ry="3"/><ellipse cx="146" cy="80" rx="12" ry="3.5"/><ellipse cx="120" cy="104" rx="8" ry="2.4"/></g>
+      </symbol>
+      <symbol id="soft-part" viewBox="0 0 240 180">
+        <path d="M140,140 L218,134 Q234,140 224,152 L146,158 Z" style="fill:var(--paste,#fbe6a8)" stroke="#3c422e" stroke-width="2.5" stroke-linejoin="round"/>
+        <path d="M150,158 Q154,170 166,166 Q176,162 184,170 Q196,174 202,162" style="fill:var(--paste,#fbe6a8)" stroke="#3c422e" stroke-width="2" stroke-linejoin="round"/>
+        <path d="M140,140 L200,124 Q236,126 218,134 Z" style="fill:var(--top,#faf6ec)" stroke="#3c422e" stroke-width="2.5" stroke-linejoin="round"/>
+      </symbol>
+      <symbol id="goat-wheel" viewBox="0 0 240 180">
+        <g stroke="#3c422e" stroke-width="2.5" stroke-linejoin="round">
+          <path d="M28,96 L28,132 A28,9 0 0,0 84,132 L84,96 Z" style="fill:var(--rind,#f6f0e4)"/><ellipse cx="56" cy="96" rx="28" ry="9" style="fill:var(--top,#fbf8f0)"/>
+          <path d="M92,82 L92,128 A30,10 0 0,0 152,128 L152,82 Z" style="fill:var(--rind,#f6f0e4)"/><ellipse cx="122" cy="82" rx="30" ry="10" style="fill:var(--top,#fbf8f0)"/>
+        </g>
+        <g style="fill:var(--spot,#d9cdb4)"><circle cx="44" cy="112" r="2"/><circle cx="70" cy="122" r="1.8"/><circle cx="108" cy="104" r="2.2"/><circle cx="136" cy="118" r="2"/><circle cx="122" cy="82" r="2.4"/></g>
+      </symbol>
+      <symbol id="goat-part" viewBox="0 0 240 180">
+        <g stroke="#3c422e" stroke-width="2.5" stroke-linejoin="round">
+          <path d="M160,112 L160,150 A28,9 0 0,0 216,150 L216,112 Z" style="fill:var(--rind,#f6f0e4)"/>
+          <ellipse cx="188" cy="112" rx="28" ry="9" style="fill:var(--paste,#fffcf4)"/>
+          <ellipse cx="188" cy="112" rx="23" ry="6.5" fill="none" style="stroke:var(--spot,#d9cdb4)" stroke-width="1.5"/>
+        </g>
+      </symbol>
+      <symbol id="fresh-wheel" viewBox="0 0 240 180">
+        <path d="M30,70 L150,70 L174,56 L54,56 Z" style="fill:var(--top,#fdf8ec)" stroke="#3c422e" stroke-width="2.5" stroke-linejoin="round"/>
+        <path d="M30,70 L150,70 L150,140 L30,140 Z" style="fill:var(--rind,#fbf3df)" stroke="#3c422e" stroke-width="2.5" stroke-linejoin="round"/>
+        <path d="M150,70 L174,56 L174,126 L150,140 Z" style="fill:var(--spot,#e9dcc0)" stroke="#3c422e" stroke-width="2.5" stroke-linejoin="round"/>
+        <path d="M40,88 q30,-6 60,0 M48,112 q30,6 70,0" fill="none" stroke="#3c422e" stroke-width="1.4" opacity=".35" stroke-linecap="round"/>
+      </symbol>
+      <symbol id="fresh-part" viewBox="0 0 240 180">
+        <path d="M168,132 C178,118 196,118 204,128 C214,140 206,156 192,158 C176,160 160,148 168,132 Z" style="fill:var(--paste,#fdf8ec)" stroke="#3c422e" stroke-width="2.5"/>
+        <path d="M200,130 C214,112 222,96 214,80" fill="none" stroke="#3c422e" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M200,130 C214,112 222,96 214,80" fill="none" style="stroke:var(--paste,#fdf8ec)" stroke-width="1" stroke-linecap="round"/>
+      </symbol>
+
+      <!-- Vache de Salers, nuage, buron, gentiane, miette -->
+      <symbol id="cow" viewBox="0 0 132 86">
+        <path d="M22,26 Q12,32 12,50" fill="none" stroke="#3c422e" stroke-width="3.2" stroke-linecap="round"/>
+        <g fill="#3c422e">
+          <path d="M20,30 Q20,18 34,18 L86,18 Q100,18 100,32 L100,48 Q100,56 92,56 L30,56 Q20,56 20,46 Z"/>
+          <rect x="25" y="50" width="8" height="28" rx="3"/><rect x="38" y="50" width="8" height="25" rx="3"/>
+          <rect x="80" y="50" width="8" height="28" rx="3"/><rect x="91" y="50" width="8" height="25" rx="3"/>
+          <path d="M94,24 C104,22 112,26 118,36 C122,44 122,54 116,58 C110,60 104,56 100,48 Z"/>
+        </g>
+        <path d="M106,28 C104,16 96,12 90,14 M114,32 C120,20 128,18 130,24" fill="none" stroke="#3c422e" stroke-width="3" stroke-linecap="round"/>
+        <circle cx="110" cy="38" r="1.8" fill="#fff4ec"/>
+      </symbol>
+      <symbol id="cloud" viewBox="0 0 140 50">
+        <path d="M8,46 Q2,46 2,38 Q2,28 14,28 Q16,14 32,14 Q40,2 58,6 Q70,-2 84,8 Q100,4 106,18 Q122,16 126,30 Q138,30 138,40 Q138,46 130,46 Z" fill="#fff4ec" stroke="#3c422e" stroke-width="2.5" stroke-linejoin="round"/>
+      </symbol>
+      <symbol id="hut" viewBox="0 0 240 180">
+        <path d="M156,22 L174,22 L174,66 L156,66 Z" fill="#ece3d3" stroke="#3c422e" stroke-width="2.5" stroke-linejoin="round"/>
+        <path d="M151,15 L179,15 L179,24 L151,24 Z" fill="#3c422e"/>
+        <path d="M46,96 L194,96 L194,172 L46,172 Z" fill="#ece3d3" stroke="#3c422e" stroke-width="2.5" stroke-linejoin="round"/>
+        <g fill="none" stroke="#3c422e" stroke-width="1.6" stroke-linecap="round" opacity=".6"><path d="M54,110 h14 M76,106 h10 M150,112 h16 M172,106 h12 M56,140 h12 M160,146 h18 M52,160 h16 M168,162 h14 M78,152 h10 M160,126 h8"/></g>
+        <path d="M24,102 L120,8 L216,102 Z" fill="url(#lauze)" stroke="#3c422e" stroke-width="2.5" stroke-linejoin="round"/>
+        <path d="M100,172 L100,134 Q120,114 140,134 L140,172 Z" fill="#3c422e"/>
+        <rect x="160" y="118" width="18" height="16" rx="2" fill="#3c422e"/>
+        <rect x="62" y="118" width="18" height="16" rx="2" fill="#3c422e"/>
+        <path d="M28,172 H212" stroke="#3c422e" stroke-width="2.5" stroke-linecap="round"/>
+      </symbol>
+      <symbol id="gentian" viewBox="0 0 40 170">
+        <path d="M20,170 V14" stroke="#3c422e" stroke-width="3" stroke-linecap="round"/>
+        <g fill="#9eef80" stroke="#3c422e" stroke-width="2" stroke-linejoin="round">
+          <path d="M20,152 C8,150 1,140 2,130 C12,133 19,142 20,152 Z"/><path d="M20,152 C32,150 39,140 38,130 C28,133 21,142 20,152 Z"/>
+          <path d="M20,120 C9,117 4,108 5,101 C14,104 19,111 20,120 Z"/><path d="M20,120 C31,117 36,108 35,101 C26,104 21,111 20,120 Z"/>
+        </g>
+        <g fill="#fbd535" stroke="#3c422e" stroke-width="1.8">
+          <circle cx="11" cy="86" r="5.5"/><circle cx="29" cy="86" r="5.5"/><circle cx="20" cy="81" r="5.5"/>
+          <circle cx="12" cy="56" r="5"/><circle cx="28" cy="56" r="5"/><circle cx="20" cy="51" r="5"/>
+          <circle cx="14" cy="28" r="4.5"/><circle cx="26" cy="28" r="4.5"/><circle cx="20" cy="21" r="5"/>
+        </g>
+      </symbol>
+      <symbol id="crumb" viewBox="-8 -8 16 16">
+        <path d="M-6,0 Q-4,-6 0,-5 Q6,-3 5,2 Q1,6 -4,4 Z" fill="#fbf0dc" stroke="#3c422e" stroke-width="1.2"/>
+        <circle cx="-1.5" cy="0" r="1.4" fill="#50665c"/><circle cx="2" cy="1.2" r="1" fill="#3c422e"/>
+      </symbol>
+    </defs>
+  </svg>
+
+  <!-- ============ Curseur & grain ============ -->
+  <div class="cursor" aria-hidden="true">
+    <div class="cursor__ring"><span class="cursor__ring-inner"></span><span class="cursor__label"></span></div>
+    <div class="cursor__dot"></div>
+  </div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- ============ En-tête ============ -->
+  <header class="site-header" data-header>
+    <div class="ticker">
+      <div class="marquee marquee--ticker" data-marquee data-speed="40">
+        <div class="marquee__group">
+          <span>Fromages d’Auvergne affinés</span><svg class="ast" aria-hidden="true"><use href="#ast"/></svg>
+          <span>Click &amp; collect</span><svg class="ast" aria-hidden="true"><use href="#ast"/></svg>
+          <span>Coupe à la demande</span><svg class="ast" aria-hidden="true"><use href="#ast"/></svg>
+          <span>Idées recettes</span><svg class="ast" aria-hidden="true"><use href="#ast"/></svg>
+        </div>
+      </div>
+    </div>
+    <div class="nav">
+      <a class="nav__logo" href="index.html" aria-label="Le Buron, accueil">
+        <span class="nav__logo-word">Le Buron</span>
+        <span class="nav__logo-tag">fromagerie<br>artisanale</span>
+      </a>
+      <nav class="nav__links" aria-label="Navigation principale">
+        <a class="link" href="fromages.html">Fromages</a>
+        <a class="link" href="index.html#histoire">L’histoire</a>
+        <a class="link" href="recettes.html">Recettes</a>
+        <a class="link" href="commande.html">Click &amp; collect</a>
+        <a class="link" href="index.html#infos">Infos</a>
+      </nav>
+      <div class="nav__actions">
+        <button class="pill pill--status" type="button" data-status-pill data-hours-toggle aria-expanded="false" aria-controls="hours-panel">
+          <span class="status-dot" aria-hidden="true"></span><span data-status-short>Horaires</span>
+          <svg class="pill__chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M2,4 L6,8 L10,4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <a class="pill pill--dark" href="commande.html" data-magnetic>Commander</a>
+        <button class="nav__burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="Ouvrir le menu">
+          <span></span><span></span>
+        </button>
+      </div>
+    </div>
+    <div class="progress" aria-hidden="true"><span></span></div>
+  </header>
+
+  <!-- Menu plein écran (mobile) -->
+  <div class="menu" id="menu" hidden>
+    <nav class="menu__links" aria-label="Menu">
+      <a href="fromages.html"><span>Fromages</span></a>
+      <a href="recettes.html"><span>Recettes</span></a>
+      <a href="commande.html"><span>Click &amp; collect</span></a>
+      <a href="index.html#histoire"><span>L’histoire</span></a>
+      <a href="index.html#infos"><span>Infos</span></a>
+    </nav>
+    <p class="menu__foot">9, rue des Saulées · 63400 Chamalières · 04 73 37 88 85</p>
+  </div>
+
+  <!-- Panneau des horaires (ouvert depuis la pastille en haut à droite) -->
+  <div class="hours-panel" id="hours-panel" hidden>
+    <div class="hours-panel__inner" role="dialog" aria-modal="false" aria-labelledby="hours-panel-title">
+      <div class="hours-panel__head">
+        <div>
+          <p class="badge"><svg class="ast" aria-hidden="true"><use href="#ast"/></svg> Horaires d’ouverture</p>
+          <h2 class="h-sm" id="hours-panel-title">Le Buron, Chamalières</h2>
+        </div>
+        <button class="hours-panel__close" type="button" data-hours-close aria-label="Fermer les horaires">×</button>
+      </div>
+      <p class="status" data-status><span class="status-dot" aria-hidden="true"></span><span data-status-text>Consultez nos horaires</span></p>
+      <div class="hours-panel__body">
+        <table class="hours" data-hours-table><caption class="visually-hidden">Horaires d’ouverture</caption><tbody></tbody></table>
+        <div class="hours-panel__info">
+          <address><strong>Le Buron</strong><br>9, rue des Saulées<br>63400 Chamalières</address>
+          <a class="link" href="tel:+33473378885">04&nbsp;73&nbsp;37&nbsp;88&nbsp;85</a>
+          <div class="hours-panel__ctas">
+            <a class="btn btn--primary" href="https://www.google.com/maps/search/?api=1&amp;query=Le+Buron+9+rue+des+Saul%C3%A9es+63400+Chamali%C3%A8res" target="_blank" rel="noopener"><span class="btn__label"><span data-text="Itinéraire">Itinéraire</span></span></a>
+            <a class="btn btn--ghost" href="commande.html"><span class="btn__label"><span data-text="Click &amp; collect">Click &amp; collect</span></span></a>
+          </div>
+        </div>
+      </div>
+      <p class="hours-panel__note">Horaires indicatifs, relevés en ligne. Les jours fériés, un petit appel avant de passer.</p>
+    </div>
+  </div>
+
+  <!-- Rideau de transition entre les pages -->
+  <div class="curtain" aria-hidden="true">
+    <div class="curtain__bands"><span></span><span></span><span></span><span></span><span></span></div>
+    <div class="curtain__center">
+      <svg class="curtain__wheel" viewBox="-60 -60 120 120"><g class="curtain__spin"><use href="#wheel-top" x="-52" y="-52" width="104" height="104"/><use class="curtain__wedge" href="#wedge-top" x="-52" y="-52" width="104" height="104"/></g></svg>
+      <p class="curtain__title" data-curtain-title>Le Buron</p>
+    </div>
+  </div>
+
+  <main id="contenu">
+
+    <section class="page-hero" aria-labelledby="page-title">
+      <div class="page-hero__text">
+        <p class="badge" data-reveal><svg class="ast" aria-hidden="true"><use href="#ast"/></svg> En cuisine <svg class="ast" aria-hidden="true"><use href="#ast"/></svg></p>
+        <h1 class="page-hero__title" id="page-title" data-split>Recettes d’Auvergne</h1>
+        <p class="body-lg" data-reveal>Truffade, aligot, fondue, patranque… Les grands classiques des volcans, expliqués pas à pas, avec le fromage qu’il vous faut.</p>
+      </div>
+      <figure class="page-hero__media" data-reveal>
+        <img src="assets/photos/fondue-pain-2.jpg" alt="Fromage fondu qui file d’un pain de campagne creusé" width="1400" height="934">
+        <figcaption>Photo Pexels.</figcaption>
+      </figure>
+    </section>
+
+    <section class="recipes band" aria-labelledby="recipes-title" style="--band: var(--green); --outer: var(--cream)">
+      <div class="band__bg" aria-hidden="true"></div>
+      <div class="recipes__inner">
+        <div class="cave__head">
+          <h2 class="h" id="recipes-title">Toutes les recettes</h2>
+          <div class="filters" role="group" aria-label="Filtrer par type de plat" data-recipe-filters></div>
+        </div>
+        <div class="recipes__grid" data-recipe-grid>
+          <noscript><p>Activez JavaScript pour afficher les recettes.</p></noscript>
+        </div>
+      </div>
+    </section>
+
+    <div class="recipe-view" id="recipe-view" hidden data-lenis-prevent></div>
+  </main>
+
+  <!-- ============ 11. Pied de page ============ -->
+  <footer class="footer" data-dark>
+    <svg class="footer__mountains" viewBox="0 0 1600 220" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
+      <g class="footer__ridge footer__ridge--back">
+        <path d="M0,220 V150 C70,146 110,112 150,96 L168,92 Q190,100 212,92 L230,96 C270,120 300,134 360,136 C420,130 450,92 490,74 C530,58 560,70 590,90 C630,116 670,128 720,124 C780,118 800,96 830,96 C870,96 900,120 950,128 C1010,134 1040,96 1080,80 L1098,76 Q1120,84 1142,76 L1160,80 C1200,104 1240,124 1300,126 C1360,124 1400,96 1440,84 C1480,74 1520,86 1560,106 C1580,116 1590,120 1600,122 V220 Z" fill="#59604a"/>
+      </g>
+      <g class="footer__ridge footer__ridge--front">
+        <path d="M0,220 V176 C60,170 96,140 132,126 L150,122 Q170,130 190,122 L206,126 C240,146 270,160 330,162 C380,156 406,128 440,112 L458,106 Q480,116 502,106 L518,110 C556,138 590,152 640,150 C680,140 700,110 724,84 C744,62 770,46 800,44 C830,42 858,60 878,84 C900,110 916,134 960,148 C1010,154 1040,128 1076,112 L1094,108 Q1114,116 1134,108 L1150,112 C1190,136 1230,152 1290,154 C1340,150 1370,126 1404,114 C1440,104 1470,116 1500,134 C1540,156 1570,164 1600,166 V220 Z" fill="#3c422e"/>
+        <rect x="796" y="8" width="8" height="38" fill="#3c422e"/>
+        <circle class="footer__beacon" cx="800" cy="6" r="4" fill="#fbd535"/>
+      </g>
+    </svg>
+
+    <div class="footer__inner">
+      <div class="footer__cta">
+        <h2 class="h" data-split>On vous garde un morceau&nbsp;?</h2>
+        <!-- ✏️ À PERSONNALISER : adresse e-mail -->
+        <a class="btn btn--primary" href="commande.html" data-magnetic><span class="btn__label"><span data-text="Commander en click &amp; collect">Commander en click &amp; collect</span></span></a>
+      </div>
+
+      <!-- ✏️ À PERSONNALISER : adresse, téléphone, e-mail -->
+      <div class="footer__cols">
+        <div class="footer__col">
+          <p class="footer__label">La fromagerie</p>
+          <p>Le Buron<br>9, rue des Saulées<br>63400 Chamalières</p>
+        </div>
+        <div class="footer__col">
+          <p class="footer__label">Horaires</p>
+          <p>Du lundi au samedi<br>Fermé le dimanche<br><button class="link" type="button" data-hours-toggle>Le détail</button></p>
+        </div>
+        <div class="footer__col">
+          <p class="footer__label">Contact</p>
+          <p><a class="link" href="tel:+33473378885">04&nbsp;73&nbsp;37&nbsp;88&nbsp;85</a><br><a class="link" href="mailto:contact@example.com">contact@example.com</a></p>
+        </div>
+        <div class="footer__col">
+          <p class="footer__label">Le site</p>
+          <p><a class="link" href="fromages.html">Fromages</a><br><a class="link" href="recettes.html">Recettes</a><br><a class="link" href="commande.html">Click &amp; collect</a></p>
+        </div>
+      </div>
+
+      <p class="footer__word" aria-hidden="true">Le Buron</p>
+
+      <div class="footer__bottom">
+        <p>© <span data-year>2026</span> Le Buron · Fromagerie artisanale à Chamalières · Photos Pexels</p>
+        <p class="footer__made">Fait avec du lait, du temps et de la patience.</p>
+        <a class="footer__top" href="#top" data-magnetic aria-label="Retour en haut de page">
+          <svg class="footer__top-ring" viewBox="0 0 100 100" aria-hidden="true">
+            <defs><path id="top-circle" d="M50,50 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0"/></defs>
+            <text font-family="'Courier Prime', monospace" font-size="10" font-weight="700" fill="#fff4ec"><textPath href="#top-circle" textLength="236" lengthAdjust="spacing">RETOUR EN HAUT • RETOUR EN HAUT • </textPath></text>
+          </svg>
+          <svg class="footer__top-arrow" viewBox="0 0 24 24" aria-hidden="true"><use href="#arrow"/></svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

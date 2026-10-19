@@ -17,6 +17,8 @@
 
   let lenis = null;
   const scroll = { velocity: 0, direction: 1 };
+  // accès partagé avec app.js (transitions, fiches)
+  window.LB = { get lenis() { return lenis; } };
 
   /* ---------- Fonctions toujours actives (avec ou sans animations) ---------- */
   initYear();
@@ -100,6 +102,10 @@
   function runPreloader() {
     const el = $('.preloader');
     if (!el) return Promise.resolve();
+    // le préchargement ne se joue qu’à la première visite de la session
+    let seen = root.classList.contains('is-arriving');
+    try { seen = seen || !!sessionStorage.getItem('lb-seen'); sessionStorage.setItem('lb-seen', '1'); } catch (e) { /* rien */ }
+    if (seen) { el.remove(); return Promise.resolve(); }
     const count = $('[data-preloader-count]', el);
     const counter = { v: 0 };
 
@@ -563,7 +569,6 @@
 
     // Grammes de fromage par personne (fourchette basse, haute)
     const RULES = { dessert: [50, 80], apero: [80, 120], repas: [150, 200], raclette: [200, 250] };
-    const OCCASIONS = { dessert: 'fin de repas', apero: 'apéritif', repas: 'repas fromage', raclette: 'raclette' };
     const CHEESES = [
       { name: 'Saint-Nectaire fermier', rind: '#d9bf9c', paste: '#fde17e' },
       { name: 'Cantal entre-deux', rind: '#dccdaa', paste: '#fbe49a' },
@@ -652,23 +657,7 @@
       listEl.textContent = list.map((c) => c.name).join(', ');
       range.style.setProperty('--fill', `${((guests - range.min) / (range.max - range.min)) * 100}%`);
 
-      if (order) {
-        const email = order.dataset.email || '';
-        const subject = `Commande de plateau — ${guests} personnes`;
-        const body = [
-          'Bonjour,',
-          '',
-          `Je souhaiterais commander un plateau pour ${guests} personnes (${OCCASIONS[occasion]}), soit environ ${weight} de fromage.`,
-          `Sélection suggérée : ${listEl.textContent}.`,
-          '',
-          'Date souhaitée : ',
-          'Nom : ',
-          'Téléphone : ',
-          '',
-          'Merci !',
-        ].join('\n');
-        order.href = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-      }
+      if (order) order.href = `commande.html?type=plateau&guests=${guests}&occasion=${occasion}`;
       renderBoard(list);
     };
 
@@ -808,6 +797,7 @@
      Horaires : « ouvert / fermé » en direct (heure de Paris)
      ======================================================================= */
   function initOpenStatus() {
+    if (window.LB_DATA) return; // géré par app.js à partir de data.js
     const rows = $$('[data-hours] tr[data-day]');
     if (!rows.length) return;
     const DAY_NAMES = ['dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi'];

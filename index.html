@@ -3,16 +3,16 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Le Buron — Fromagerie artisanale à Clermont-Ferrand</title>
-  <meta name="description" content="Le Buron, fromagerie artisanale à Clermont-Ferrand : Saint-Nectaire, Cantal, Salers, Fourme d’Ambert, Bleu d’Auvergne, plateaux sur commande et conseils de fromager.">
+  <title>Le Buron — Fromagerie artisanale à Chamalières, Clermont-Ferrand</title>
+  <meta name="description" content="Le Buron, fromagerie artisanale au 9 rue des Saulées à Chamalières : Saint-Nectaire, Cantal, Salers, Fourme d’Ambert, Bleu d’Auvergne, plateaux et click &amp; collect, recettes et conseils de fromager.">
   <meta name="theme-color" content="#fff4ec">
 
   <!-- Partage sur les réseaux — ✏️ À PERSONNALISER : remplacez l’URL de l’image par l’adresse complète une fois le site en ligne -->
   <meta property="og:type" content="website">
   <meta property="og:locale" content="fr_FR">
   <meta property="og:site_name" content="Le Buron">
-  <meta property="og:title" content="Le Buron — Fromagerie artisanale à Clermont-Ferrand">
-  <meta property="og:description" content="Les grands fromages d’Auvergne, choisis avec soin et coupés à la demande, au cœur de Clermont-Ferrand.">
+  <meta property="og:title" content="Le Buron — Fromagerie artisanale à Chamalières">
+  <meta property="og:description" content="Les grands fromages d’Auvergne, choisis avec soin et coupés à la demande, à Chamalières aux portes de Clermont-Ferrand.">
   <meta property="og:image" content="assets/img/og-image.jpg">
   <meta name="twitter:card" content="summary_large_image">
 
@@ -22,11 +22,13 @@
   <link rel="preload" href="assets/fonts/courier-prime-400-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="assets/css/style.css">
 
-  <script>document.documentElement.classList.replace('no-js', 'js');</script>
+  <script>document.documentElement.classList.replace('no-js', 'js');try{if(sessionStorage.getItem('lb-curtain'))document.documentElement.classList.add('is-arriving')}catch(e){}</script>
   <script src="assets/vendor/gsap.min.js" defer></script>
   <script src="assets/vendor/ScrollTrigger.min.js" defer></script>
   <script src="assets/vendor/SplitText.min.js" defer></script>
   <script src="assets/vendor/lenis.min.js" defer></script>
+  <script src="assets/js/data.js" defer></script>
+  <script src="assets/js/app.js" defer></script>
   <script src="assets/js/main.js" defer></script>
 
   <script type="application/ld+json">
@@ -34,17 +36,19 @@
     "@context": "https://schema.org",
     "@type": "Store",
     "name": "Le Buron",
-    "description": "Fromagerie artisanale : fromages d’Auvergne, plateaux sur commande et conseils de fromager.",
+    "description": "Fromagerie artisanale : fromages d’Auvergne, plateaux et click & collect, conseils de fromager.",
+    "telephone": "+33 4 73 37 88 85",
     "address": {
       "@type": "PostalAddress",
-      "addressLocality": "Clermont-Ferrand",
-      "postalCode": "63000",
+      "streetAddress": "9 rue des Saulées",
+      "addressLocality": "Chamalières",
+      "postalCode": "63400",
       "addressCountry": "FR"
     }
   }
   </script>
 </head>
-<body>
+<body class="page-home">
   <a class="skip-link" href="#contenu">Aller au contenu</a>
 
   <!-- ============ Bibliothèque d’illustrations (réutilisées avec <use>) ============ -->
@@ -196,6 +200,80 @@
         <path d="M148,170 L148,140 C148,124 164,112 184,112 C206,112 222,130 226,170 Z" fill="none" stroke="#3c422e" stroke-width="2.5" stroke-linejoin="round"/>
       </symbol>
 
+
+      <!-- Dessins génériques, colorés par les variables --rind, --top, --paste, --spot, --vein -->
+      <symbol id="tall-wheel" viewBox="0 0 240 180">
+        <path d="M34,44 L34,142 A62,20 0 0,0 158,142 L158,44 Z" style="fill:var(--rind,#dccdaa)" stroke="#3c422e" stroke-width="2.5" stroke-linejoin="round"/>
+        <g style="fill:var(--spot,#cdbb94)"><ellipse cx="54" cy="84" rx="8" ry="5"/><ellipse cx="124" cy="122" rx="9" ry="5"/><ellipse cx="82" cy="136" rx="6" ry="3"/><ellipse cx="142" cy="74" rx="5" ry="7"/></g>
+        <ellipse cx="96" cy="44" rx="62" ry="20" style="fill:var(--top,#e8dcc0)" stroke="#3c422e" stroke-width="2.5"/>
+      </symbol>
+      <symbol id="tall-part" viewBox="0 0 240 180">
+        <path d="M212,124 Q222,108 194,102 L194,148 Q222,154 212,170 Z" style="fill:var(--rind,#dccdaa)" stroke="#3c422e" stroke-width="2.5" stroke-linejoin="round"/>
+        <path d="M150,118 L212,124 L212,170 L150,164 Z" style="fill:var(--paste,#fbe49a)"/>
+        <path d="M150,164 L212,170 M212,124 L212,170" style="stroke:var(--rind,#dccdaa)" stroke-width="6"/>
+        <path d="M150,118 L212,124 L212,170 L150,164 Z" fill="none" stroke="#3c422e" stroke-width="2.5" stroke-linejoin="round"/>
+        <path d="M150,118 L194,102 Q222,108 212,124 Z" style="fill:var(--top,#e8dcc0)" stroke="#3c422e" stroke-width="2.5" stroke-linejoin="round"/>
+      </symbol>
+      <symbol id="disc-wheel" viewBox="0 0 240 180">
+        <path d="M22,78 L22,112 A88,30 0 0,0 198,112 L198,78 Z" style="fill:var(--rind,#d9bf9c)" stroke="#3c422e" stroke-width="2.5" stroke-linejoin="round"/>
+        <ellipse cx="110" cy="78" rx="88" ry="30" style="fill:var(--top,#e8d5b7)" stroke="#3c422e" stroke-width="2.5"/>
+        <g style="fill:var(--spot,#c9a978)"><ellipse cx="70" cy="74" rx="8" ry="3"/><ellipse cx="150" cy="66" rx="9" ry="3.5"/><ellipse cx="130" cy="94" rx="6" ry="2.4"/><ellipse cx="60" cy="112" rx="6" ry="3"/><ellipse cx="170" cy="116" rx="6" ry="3.4"/></g>
+      </symbol>
+      <symbol id="disc-part" viewBox="0 0 240 180">
+        <path d="M222,142 Q232,120 206,114 L206,142 Q232,148 222,170 Z" style="fill:var(--rind,#d9bf9c)" stroke="#3c422e" stroke-width="2.5" stroke-linejoin="round"/>
+        <path d="M146,134 L222,142 L222,170 L146,162 Z" style="fill:var(--paste,#fde17e)"/>
+        <path d="M146,162 L222,170 M222,142 L222,170" style="stroke:var(--rind,#d9bf9c)" stroke-width="6"/>
+        <path d="M146,134 L222,142 L222,170 L146,162 Z" fill="none" stroke="#3c422e" stroke-width="2.5" stroke-linejoin="round"/>
+        <path d="M146,134 L206,114 Q232,120 222,142 Z" style="fill:var(--top,#e8d5b7)" stroke="#3c422e" stroke-width="2.5" stroke-linejoin="round"/>
+      </symbol>
+      <symbol id="blue-wheel" viewBox="0 0 240 180">
+        <path d="M30,72 L30,118 A74,24 0 0,0 178,118 L178,72 Z" style="fill:var(--rind,#efe6d2)" stroke="#3c422e" stroke-width="2.5" stroke-linejoin="round"/>
+        <ellipse cx="104" cy="72" rx="74" ry="24" style="fill:var(--top,#f6efdf)" stroke="#3c422e" stroke-width="2.5"/>
+        <g style="fill:var(--vein,#50665c)" opacity=".7"><circle cx="70" cy="68" r="3"/><circle cx="118" cy="62" r="2.4"/><circle cx="136" cy="80" r="3.2"/><circle cx="88" cy="84" r="2"/><circle cx="56" cy="100" r="2.4"/><circle cx="150" cy="108" r="2.6"/></g>
+      </symbol>
+      <symbol id="blue-part" viewBox="0 0 240 180">
+        <path d="M220,136 Q230,118 204,110 L204,144 Q230,152 220,170 Z" style="fill:var(--rind,#efe6d2)" stroke="#3c422e" stroke-width="2.5" stroke-linejoin="round"/>
+        <path d="M144,128 L220,136 L220,170 L144,162 Z" style="fill:var(--paste,#fbf0dc)"/>
+        <g style="fill:var(--vein,#50665c)"><path d="M156,140 q5,-3 8,1 q-4,4 -8,-1 Z"/><path d="M178,146 q6,-2 8,3 q-5,3 -8,-3 Z"/><path d="M200,142 q4,-3 7,1 q-3,3 -7,-1 Z"/><path d="M166,154 q4,-2 6,2 q-3,2 -6,-2 Z"/><path d="M196,158 q5,-2 7,2 q-4,2 -7,-2 Z"/><circle cx="186" cy="136" r="2"/><circle cx="152" cy="152" r="1.6"/></g>
+        <path d="M144,128 L220,136 L220,170 L144,162 Z" fill="none" stroke="#3c422e" stroke-width="2.5" stroke-linejoin="round"/>
+        <path d="M144,128 L204,110 Q230,118 220,136 Z" style="fill:var(--top,#f6efdf)" stroke="#3c422e" stroke-width="2.5" stroke-linejoin="round"/>
+      </symbol>
+      <symbol id="soft-wheel" viewBox="0 0 240 180">
+        <path d="M14,92 L14,108 A96,30 0 0,0 206,108 L206,92 Z" style="fill:var(--rind,#f5efe2)" stroke="#3c422e" stroke-width="2.5" stroke-linejoin="round"/>
+        <ellipse cx="110" cy="92" rx="96" ry="30" style="fill:var(--top,#faf6ec)" stroke="#3c422e" stroke-width="2.5"/>
+        <g style="fill:var(--spot,#d9b98c)" opacity=".6"><ellipse cx="70" cy="88" rx="10" ry="3"/><ellipse cx="146" cy="80" rx="12" ry="3.5"/><ellipse cx="120" cy="104" rx="8" ry="2.4"/></g>
+      </symbol>
+      <symbol id="soft-part" viewBox="0 0 240 180">
+        <path d="M140,140 L218,134 Q234,140 224,152 L146,158 Z" style="fill:var(--paste,#fbe6a8)" stroke="#3c422e" stroke-width="2.5" stroke-linejoin="round"/>
+        <path d="M150,158 Q154,170 166,166 Q176,162 184,170 Q196,174 202,162" style="fill:var(--paste,#fbe6a8)" stroke="#3c422e" stroke-width="2" stroke-linejoin="round"/>
+        <path d="M140,140 L200,124 Q236,126 218,134 Z" style="fill:var(--top,#faf6ec)" stroke="#3c422e" stroke-width="2.5" stroke-linejoin="round"/>
+      </symbol>
+      <symbol id="goat-wheel" viewBox="0 0 240 180">
+        <g stroke="#3c422e" stroke-width="2.5" stroke-linejoin="round">
+          <path d="M28,96 L28,132 A28,9 0 0,0 84,132 L84,96 Z" style="fill:var(--rind,#f6f0e4)"/><ellipse cx="56" cy="96" rx="28" ry="9" style="fill:var(--top,#fbf8f0)"/>
+          <path d="M92,82 L92,128 A30,10 0 0,0 152,128 L152,82 Z" style="fill:var(--rind,#f6f0e4)"/><ellipse cx="122" cy="82" rx="30" ry="10" style="fill:var(--top,#fbf8f0)"/>
+        </g>
+        <g style="fill:var(--spot,#d9cdb4)"><circle cx="44" cy="112" r="2"/><circle cx="70" cy="122" r="1.8"/><circle cx="108" cy="104" r="2.2"/><circle cx="136" cy="118" r="2"/><circle cx="122" cy="82" r="2.4"/></g>
+      </symbol>
+      <symbol id="goat-part" viewBox="0 0 240 180">
+        <g stroke="#3c422e" stroke-width="2.5" stroke-linejoin="round">
+          <path d="M160,112 L160,150 A28,9 0 0,0 216,150 L216,112 Z" style="fill:var(--rind,#f6f0e4)"/>
+          <ellipse cx="188" cy="112" rx="28" ry="9" style="fill:var(--paste,#fffcf4)"/>
+          <ellipse cx="188" cy="112" rx="23" ry="6.5" fill="none" style="stroke:var(--spot,#d9cdb4)" stroke-width="1.5"/>
+        </g>
+      </symbol>
+      <symbol id="fresh-wheel" viewBox="0 0 240 180">
+        <path d="M30,70 L150,70 L174,56 L54,56 Z" style="fill:var(--top,#fdf8ec)" stroke="#3c422e" stroke-width="2.5" stroke-linejoin="round"/>
+        <path d="M30,70 L150,70 L150,140 L30,140 Z" style="fill:var(--rind,#fbf3df)" stroke="#3c422e" stroke-width="2.5" stroke-linejoin="round"/>
+        <path d="M150,70 L174,56 L174,126 L150,140 Z" style="fill:var(--spot,#e9dcc0)" stroke="#3c422e" stroke-width="2.5" stroke-linejoin="round"/>
+        <path d="M40,88 q30,-6 60,0 M48,112 q30,6 70,0" fill="none" stroke="#3c422e" stroke-width="1.4" opacity=".35" stroke-linecap="round"/>
+      </symbol>
+      <symbol id="fresh-part" viewBox="0 0 240 180">
+        <path d="M168,132 C178,118 196,118 204,128 C214,140 206,156 192,158 C176,160 160,148 168,132 Z" style="fill:var(--paste,#fdf8ec)" stroke="#3c422e" stroke-width="2.5"/>
+        <path d="M200,130 C214,112 222,96 214,80" fill="none" stroke="#3c422e" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M200,130 C214,112 222,96 214,80" fill="none" style="stroke:var(--paste,#fdf8ec)" stroke-width="1" stroke-linecap="round"/>
+      </symbol>
+
       <!-- Vache de Salers, nuage, buron, gentiane, miette -->
       <symbol id="cow" viewBox="0 0 132 86">
         <path d="M22,26 Q12,32 12,50" fill="none" stroke="#3c422e" stroke-width="3.2" stroke-linecap="round"/>
@@ -267,30 +345,31 @@
     <div class="ticker">
       <div class="marquee marquee--ticker" data-marquee data-speed="40">
         <div class="marquee__group">
-          <span>Fromages d’Auvergne affinés avec patience</span><svg class="ast" aria-hidden="true"><use href="#ast"/></svg>
-          <span>Plateaux sur commande</span><svg class="ast" aria-hidden="true"><use href="#ast"/></svg>
+          <span>Fromages d’Auvergne affinés</span><svg class="ast" aria-hidden="true"><use href="#ast"/></svg>
+          <span>Click &amp; collect</span><svg class="ast" aria-hidden="true"><use href="#ast"/></svg>
           <span>Coupe à la demande</span><svg class="ast" aria-hidden="true"><use href="#ast"/></svg>
-          <span>Raclettes, fondues &amp; truffades</span><svg class="ast" aria-hidden="true"><use href="#ast"/></svg>
+          <span>Idées recettes</span><svg class="ast" aria-hidden="true"><use href="#ast"/></svg>
         </div>
       </div>
     </div>
     <div class="nav">
-      <a class="nav__logo" href="#top" aria-label="Le Buron, retour en haut de page">
+      <a class="nav__logo" href="index.html" aria-label="Le Buron, accueil">
         <span class="nav__logo-word">Le Buron</span>
         <span class="nav__logo-tag">fromagerie<br>artisanale</span>
       </a>
       <nav class="nav__links" aria-label="Navigation principale">
-        <a class="link" href="#fromages">Fromages</a>
-        <a class="link" href="#histoire">L’histoire</a>
-        <a class="link" href="#plateaux">Plateaux</a>
-        <a class="link" href="#recettes">Recettes</a>
-        <a class="link" href="#infos">Infos</a>
+        <a class="link" href="fromages.html">Fromages</a>
+        <a class="link" href="index.html#histoire">L’histoire</a>
+        <a class="link" href="recettes.html">Recettes</a>
+        <a class="link" href="commande.html">Click &amp; collect</a>
+        <a class="link" href="index.html#infos">Infos</a>
       </nav>
       <div class="nav__actions">
-        <a class="pill pill--status" href="#infos" data-status-pill>
+        <button class="pill pill--status" type="button" data-status-pill data-hours-toggle aria-expanded="false" aria-controls="hours-panel">
           <span class="status-dot" aria-hidden="true"></span><span data-status-short>Horaires</span>
-        </a>
-        <a class="pill pill--dark" href="#plateaux" data-magnetic>Commander</a>
+          <svg class="pill__chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M2,4 L6,8 L10,4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <a class="pill pill--dark" href="commande.html" data-magnetic>Commander</a>
         <button class="nav__burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="Ouvrir le menu">
           <span></span><span></span>
         </button>
@@ -302,13 +381,48 @@
   <!-- Menu plein écran (mobile) -->
   <div class="menu" id="menu" hidden>
     <nav class="menu__links" aria-label="Menu">
-      <a href="#fromages"><span>Fromages</span></a>
-      <a href="#histoire"><span>L’histoire</span></a>
-      <a href="#plateaux"><span>Plateaux</span></a>
-      <a href="#recettes"><span>Recettes</span></a>
-      <a href="#infos"><span>Infos</span></a>
+      <a href="fromages.html"><span>Fromages</span></a>
+      <a href="recettes.html"><span>Recettes</span></a>
+      <a href="commande.html"><span>Click &amp; collect</span></a>
+      <a href="index.html#histoire"><span>L’histoire</span></a>
+      <a href="index.html#infos"><span>Infos</span></a>
     </nav>
-    <p class="menu__foot">Fromagerie artisanale · Clermont-Ferrand</p>
+    <p class="menu__foot">9, rue des Saulées · 63400 Chamalières · 04 73 37 88 85</p>
+  </div>
+
+  <!-- Panneau des horaires (ouvert depuis la pastille en haut à droite) -->
+  <div class="hours-panel" id="hours-panel" hidden>
+    <div class="hours-panel__inner" role="dialog" aria-modal="false" aria-labelledby="hours-panel-title">
+      <div class="hours-panel__head">
+        <div>
+          <p class="badge"><svg class="ast" aria-hidden="true"><use href="#ast"/></svg> Horaires d’ouverture</p>
+          <h2 class="h-sm" id="hours-panel-title">Le Buron, Chamalières</h2>
+        </div>
+        <button class="hours-panel__close" type="button" data-hours-close aria-label="Fermer les horaires">×</button>
+      </div>
+      <p class="status" data-status><span class="status-dot" aria-hidden="true"></span><span data-status-text>Consultez nos horaires</span></p>
+      <div class="hours-panel__body">
+        <table class="hours" data-hours-table><caption class="visually-hidden">Horaires d’ouverture</caption><tbody></tbody></table>
+        <div class="hours-panel__info">
+          <address><strong>Le Buron</strong><br>9, rue des Saulées<br>63400 Chamalières</address>
+          <a class="link" href="tel:+33473378885">04&nbsp;73&nbsp;37&nbsp;88&nbsp;85</a>
+          <div class="hours-panel__ctas">
+            <a class="btn btn--primary" href="https://www.google.com/maps/search/?api=1&amp;query=Le+Buron+9+rue+des+Saul%C3%A9es+63400+Chamali%C3%A8res" target="_blank" rel="noopener"><span class="btn__label"><span data-text="Itinéraire">Itinéraire</span></span></a>
+            <a class="btn btn--ghost" href="commande.html"><span class="btn__label"><span data-text="Click &amp; collect">Click &amp; collect</span></span></a>
+          </div>
+        </div>
+      </div>
+      <p class="hours-panel__note">Horaires indicatifs, relevés en ligne. Les jours fériés, un petit appel avant de passer.</p>
+    </div>
+  </div>
+
+  <!-- Rideau de transition entre les pages -->
+  <div class="curtain" aria-hidden="true">
+    <div class="curtain__bands"><span></span><span></span><span></span><span></span><span></span></div>
+    <div class="curtain__center">
+      <svg class="curtain__wheel" viewBox="-60 -60 120 120"><g class="curtain__spin"><use href="#wheel-top" x="-52" y="-52" width="104" height="104"/><use class="curtain__wedge" href="#wedge-top" x="-52" y="-52" width="104" height="104"/></g></svg>
+      <p class="curtain__title" data-curtain-title>Le Buron</p>
+    </div>
   </div>
 
   <main id="contenu">
@@ -343,7 +457,7 @@
         </svg>
 
         <div class="hero__title-wrap">
-          <p class="badge hero__badge"><svg class="ast" aria-hidden="true"><use href="#ast"/></svg> Fromagerie artisanale · Clermont-Ferrand <svg class="ast" aria-hidden="true"><use href="#ast"/></svg></p>
+          <p class="badge hero__badge"><svg class="ast" aria-hidden="true"><use href="#ast"/></svg> Fromagerie artisanale · Chamalières <svg class="ast" aria-hidden="true"><use href="#ast"/></svg></p>
           <h1 class="hero__title" id="hero-title">Le goût des estives,<br> au cœur de <em>Clermont.</em></h1>
         </div>
 
@@ -380,7 +494,7 @@
           <p class="hero__lead">Saint-Nectaire, Cantal, Salers, Fourme d’Ambert, Bleu d’Auvergne… Les grands fromages des volcans, choisis avec soin et coupés à la demande.</p>
           <div class="hero__ctas">
             <a class="btn btn--primary" href="#fromages" data-magnetic><span class="btn__label"><span data-text="Nos fromages">Nos fromages</span></span></a>
-            <a class="btn btn--ghost btn--on-dark" href="#plateaux" data-magnetic><span class="btn__label"><span data-text="Composer un plateau">Composer un plateau</span></span></a>
+            <a class="btn btn--ghost btn--on-dark" href="commande.html" data-magnetic><span class="btn__label"><span data-text="Commander en click &amp; collect">Commander en click &amp; collect</span></span></a>
           </div>
         </div>
         <a class="hero__scroll" href="#histoire">
@@ -422,11 +536,11 @@
       <p class="manifesto__text" data-highlight>
         Là-haut, dans les estives, le buron
         <span class="inline-pill inline-pill--mustard" aria-hidden="true"><svg viewBox="0 0 240 180"><use href="#hut"/></svg></span>
-        est une cabane de pierre et de lauzes où l’on faisait le fromage tout l’été. Nous en avons gardé l’essentiel&nbsp;: un lait d’herbe
+        est une cabane de pierre et de lauzes où l’on faisait le fromage tout l’été. Nous en avons gardé l’essentiel&nbsp;: du lait
         <span class="inline-pill inline-pill--green" aria-hidden="true"><svg viewBox="0 0 132 86"><use href="#cow"/></svg></span>,
         du temps
         <span class="inline-pill inline-pill--peach" aria-hidden="true"><svg viewBox="0 0 104 104"><use href="#wheel-top"/></svg></span>
-        et des mains qui savent attendre.
+        et du savoir-faire.
       </p>
 
       <div class="manifesto__foot">
@@ -434,7 +548,7 @@
           <svg class="spin-badge__ring" viewBox="0 0 200 200">
             <defs><path id="badge-circle" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0"/></defs>
             <text font-family="'Courier Prime', monospace" font-size="13" font-weight="700" fill="#3c422e">
-              <textPath href="#badge-circle" textLength="486" lengthAdjust="spacing">FROMAGERIE ARTISANALE • CLERMONT-FERRAND • </textPath>
+              <textPath href="#badge-circle" textLength="486" lengthAdjust="spacing">FROMAGERIE ARTISANALE • CHAMALIÈRES • </textPath>
             </text>
           </svg>
           <svg class="spin-badge__wheel" viewBox="0 0 104 104"><use href="#wheel-top"/></svg>
@@ -462,13 +576,13 @@
       <div class="fromages__pin">
         <div class="fromages__head">
           <p class="badge" data-reveal><svg class="ast" aria-hidden="true"><use href="#ast"/></svg> Le comptoir <svg class="ast" aria-hidden="true"><use href="#ast"/></svg></p>
-          <h2 class="h-lg" id="fromages-title" data-split>Les cinq AOP d’Auvergne</h2>
+          <h2 class="h-lg" id="fromages-title" data-split>Nos fromages d’Auvergne</h2>
         </div>
 
         <div class="fromages__viewport">
-          <div class="fromages__track">
+          <div class="fromages__track" data-cheese-track>
             <div class="fromages__intro">
-              <p class="body-lg">Cinq appellations, cinq caractères. Au comptoir, on les découpe devant vous, et on vous fait goûter avant de choisir.</p>
+              <p class="body-lg">Les cinq AOP d’Auvergne et leurs voisins du Massif central. Cliquez sur un fromage pour le voir en photo, avec son histoire et son prix au kilo.</p>
               <p class="fromages__hint"><span class="only-desktop">Faites défiler</span><span class="only-touch">Faites glisser</span><svg class="icon-arrow" aria-hidden="true"><use href="#arrow"/></svg></p>
             </div>
 
@@ -677,6 +791,7 @@
           <h2 class="h-lg" id="plateaux-title" data-split>Composez votre plateau</h2>
           <p class="body-lg" data-reveal>Dites-nous combien vous serez, on s’occupe du reste. Et comme le veut la tradition, un plateau compte toujours un nombre impair de fromages.</p>
           <ul class="services">
+            <li class="services__item" data-reveal><span>Click &amp; collect</span><span class="services__note">commandez, retirez en boutique</span></li>
             <li class="services__item" data-reveal><span>Plateaux apéritif &amp; repas</span><span class="services__note">sur commande</span></li>
             <li class="services__item" data-reveal><span>Raclette, fondue, truffade</span><span class="services__note">fromages à la coupe</span></li>
             <li class="services__item" data-reveal><span>Coffrets &amp; paniers cadeaux</span><span class="services__note">toute l’année</span></li>
@@ -724,11 +839,10 @@
               <p class="calc__list"><strong data-calc-count>5 fromages</strong>&nbsp;: <span data-calc-list>Saint-Nectaire fermier, Cantal entre-deux, Fourme d’Ambert, Salers, Gaperon</span></p>
             </div>
 
-            <!-- ✏️ À PERSONNALISER : l’adresse e-mail qui reçoit les commandes (data-email) -->
-            <a class="btn btn--primary calc__cta" href="mailto:contact@example.com" data-calc-order data-email="contact@example.com" data-magnetic>
-              <span class="btn__label"><span data-text="Commander ce plateau">Commander ce plateau</span></span>
+            <a class="btn btn--primary calc__cta" href="commande.html" data-calc-order data-magnetic>
+              <span class="btn__label"><span data-text="Commander en click &amp; collect">Commander en click &amp; collect</span></span>
             </a>
-            <p class="calc__note">Quantités indicatives. Votre messagerie s’ouvre avec la commande pré-remplie&nbsp;; nous vous répondons pour confirmer.</p>
+            <p class="calc__note">Quantités indicatives. À l’étape suivante, vous personnalisez votre plateau et choisissez le jour et l’heure de retrait en boutique.</p>
           </div>
         </div>
       </div>
@@ -787,7 +901,7 @@
       </div>
       <div class="recettes__grid">
         <article class="recipe-card" data-reveal>
-          <button class="recipe-card__media" type="button" data-dialog="recipe-truffade" data-cursor="Miam" aria-label="Voir la recette de la truffade">
+          <a class="recipe-card__media" href="recettes.html#truffade" data-cursor="Miam" aria-label="Voir la recette de la truffade">
             <svg class="recipe-art recipe-art--truffade" viewBox="0 0 320 240" aria-hidden="true">
               <rect width="320" height="240" fill="#fff4ec"/>
               <g class="r-pan">
@@ -822,14 +936,14 @@
                 <circle cx="124" cy="104" r="3"/><circle cx="180" cy="140" r="2.6"/><circle cx="132" cy="146" r="2.2"/><circle cx="182" cy="90" r="2.4"/>
               </g>
             </svg>
-          </button>
+          </a>
           <p class="recipe-card__caption">Recette&nbsp;: <strong>Truffade</strong></p>
           <p class="recipe-card__meta">Pour 4 · 45 min · tomme fraîche de Cantal</p>
-          <button class="arrow-link" type="button" data-dialog="recipe-truffade">Voir la recette <svg class="icon-arrow" aria-hidden="true"><use href="#arrow"/></svg></button>
+          <a class="arrow-link" href="recettes.html#truffade">Voir la recette <svg class="icon-arrow" aria-hidden="true"><use href="#arrow"/></svg></a>
         </article>
 
         <article class="recipe-card" data-reveal>
-          <button class="recipe-card__media" type="button" data-dialog="recipe-aligot" data-cursor="Miam" aria-label="Voir la recette de l’aligot">
+          <a class="recipe-card__media" href="recettes.html#aligot" data-cursor="Miam" aria-label="Voir la recette de l’aligot">
             <svg class="recipe-art recipe-art--aligot" viewBox="0 0 320 240" aria-hidden="true">
               <rect width="320" height="240" fill="#fff4ec"/>
               <path d="M70,162 Q46,160 46,178 M250,162 Q274,160 274,178" fill="none" stroke="#3c422e" stroke-width="7" stroke-linecap="round"/>
@@ -847,14 +961,14 @@
               </g>
               <path d="M96,200 q64,10 128,0" fill="none" stroke="#56603f" stroke-width="2" stroke-linecap="round"/>
             </svg>
-          </button>
+          </a>
           <p class="recipe-card__caption">Recette&nbsp;: <strong>Aligot</strong></p>
           <p class="recipe-card__meta">Pour 4 · 40 min · tomme fraîche de l’Aubrac</p>
-          <button class="arrow-link" type="button" data-dialog="recipe-aligot">Voir la recette <svg class="icon-arrow" aria-hidden="true"><use href="#arrow"/></svg></button>
+          <a class="arrow-link" href="recettes.html#aligot">Voir la recette <svg class="icon-arrow" aria-hidden="true"><use href="#arrow"/></svg></a>
         </article>
 
         <article class="recipe-card" data-reveal>
-          <button class="recipe-card__media" type="button" data-dialog="recipe-tarte" data-cursor="Miam" aria-label="Voir la recette de la tarte poire et Fourme d’Ambert">
+          <a class="recipe-card__media" href="recettes.html#tarte-poire-fourme" data-cursor="Miam" aria-label="Voir la recette de la tarte poire et Fourme d’Ambert">
             <svg class="recipe-art recipe-art--tarte" viewBox="0 0 320 240" aria-hidden="true">
               <rect width="320" height="240" fill="#fff4ec"/>
               <g class="r-tart">
@@ -881,11 +995,14 @@
                 </g>
               </g>
             </svg>
-          </button>
+          </a>
           <p class="recipe-card__caption">Recette&nbsp;: <strong>Tarte poire &amp; Fourme</strong></p>
           <p class="recipe-card__meta">Pour 6 · 50 min · Fourme d’Ambert</p>
-          <button class="arrow-link" type="button" data-dialog="recipe-tarte">Voir la recette <svg class="icon-arrow" aria-hidden="true"><use href="#arrow"/></svg></button>
+          <a class="arrow-link" href="recettes.html#tarte-poire-fourme">Voir la recette <svg class="icon-arrow" aria-hidden="true"><use href="#arrow"/></svg></a>
         </article>
+      </div>
+      <div class="recettes__more" data-reveal>
+        <a class="btn btn--ghost" href="recettes.html" data-magnetic><span class="btn__label"><span data-text="Toutes nos recettes">Toutes nos recettes</span></span></a>
       </div>
     </section>
 
@@ -899,33 +1016,33 @@
           <p class="status" data-status data-reveal><span class="status-dot" aria-hidden="true"></span><span data-status-text>Consultez nos horaires</span></p>
 
           <div class="infos__cols">
-            <!-- ✏️ À PERSONNALISER : adresse et téléphone -->
+            <!-- Adresse et téléphone : relevés sur PagesJaunes -->
             <address class="infos__address" data-reveal>
               <strong>Le Buron</strong><br>
               Fromagerie artisanale<br>
-              [Numéro et rue]<br>
-              63000 Clermont-Ferrand<br>
-              <a class="link" href="tel:+33400000000">04&nbsp;XX&nbsp;XX&nbsp;XX&nbsp;XX</a>
+              9, rue des Saulées<br>
+              63400 Chamalières<br>
+              <a class="link" href="tel:+33473378885">04&nbsp;73&nbsp;37&nbsp;88&nbsp;85</a>
             </address>
 
-            <!-- ✏️ À PERSONNALISER : horaires (data-hours au format HH:MM-HH:MM, plusieurs plages séparées par une virgule, vide = fermé). 0 = dimanche. -->
+            <!-- Horaires : générés depuis assets/js/data.js (cette version sert sans JavaScript) -->
             <table class="hours" data-hours data-reveal>
               <caption class="visually-hidden">Horaires d’ouverture</caption>
               <tbody>
-                <tr data-day="1" data-hours=""><th scope="row">Lundi</th><td>Fermé</td></tr>
-                <tr data-day="2" data-hours="09:00-12:30,15:00-19:30"><th scope="row">Mardi</th><td>9h – 12h30 · 15h – 19h30</td></tr>
-                <tr data-day="3" data-hours="09:00-12:30,15:00-19:30"><th scope="row">Mercredi</th><td>9h – 12h30 · 15h – 19h30</td></tr>
-                <tr data-day="4" data-hours="09:00-12:30,15:00-19:30"><th scope="row">Jeudi</th><td>9h – 12h30 · 15h – 19h30</td></tr>
-                <tr data-day="5" data-hours="09:00-12:30,15:00-19:30"><th scope="row">Vendredi</th><td>9h – 12h30 · 15h – 19h30</td></tr>
-                <tr data-day="6" data-hours="08:30-19:30"><th scope="row">Samedi</th><td>8h30 – 19h30</td></tr>
-                <tr data-day="0" data-hours="09:00-12:30"><th scope="row">Dimanche</th><td>9h – 12h30</td></tr>
+                <tr data-day="1" data-hours="08:00-12:00,15:00-19:00"><th scope="row">Lundi</th><td>8h – 12h · 15h – 19h</td></tr>
+                <tr data-day="2" data-hours="07:00-12:30,14:30-19:00"><th scope="row">Mardi</th><td>7h – 12h30 · 14h30 – 19h</td></tr>
+                <tr data-day="3" data-hours="07:00-12:30,14:30-19:00"><th scope="row">Mercredi</th><td>7h – 12h30 · 14h30 – 19h</td></tr>
+                <tr data-day="4" data-hours="07:00-12:30,14:30-19:00"><th scope="row">Jeudi</th><td>7h – 12h30 · 14h30 – 19h</td></tr>
+                <tr data-day="5" data-hours="07:00-19:00"><th scope="row">Vendredi</th><td>7h – 19h</td></tr>
+                <tr data-day="6" data-hours="07:00-19:00"><th scope="row">Samedi</th><td>7h – 19h</td></tr>
+                <tr data-day="0" data-hours=""><th scope="row">Dimanche</th><td>Fermé</td></tr>
               </tbody>
             </table>
           </div>
 
           <div class="infos__ctas" data-reveal>
-            <a class="btn btn--primary" href="https://www.google.com/maps/search/?api=1&amp;query=Le+Buron+fromagerie+Clermont-Ferrand" target="_blank" rel="noopener" data-magnetic><span class="btn__label"><span data-text="Itinéraire">Itinéraire</span></span></a>
-            <a class="btn btn--ghost" href="tel:+33400000000" data-magnetic><span class="btn__label"><span data-text="Appeler">Appeler</span></span></a>
+            <a class="btn btn--primary" href="https://www.google.com/maps/search/?api=1&amp;query=Le+Buron+9+rue+des+Saul%C3%A9es+63400+Chamali%C3%A8res" target="_blank" rel="noopener" data-magnetic><span class="btn__label"><span data-text="Itinéraire">Itinéraire</span></span></a>
+            <a class="btn btn--ghost" href="tel:+33473378885" data-magnetic><span class="btn__label"><span data-text="Appeler">Appeler</span></span></a>
           </div>
         </div>
 
@@ -1014,33 +1131,33 @@
       <div class="footer__cta">
         <h2 class="h" data-split>On vous garde un morceau&nbsp;?</h2>
         <!-- ✏️ À PERSONNALISER : adresse e-mail -->
-        <a class="btn btn--primary" href="mailto:contact@example.com" data-magnetic><span class="btn__label"><span data-text="Nous écrire">Nous écrire</span></span></a>
+        <a class="btn btn--primary" href="commande.html" data-magnetic><span class="btn__label"><span data-text="Commander en click &amp; collect">Commander en click &amp; collect</span></span></a>
       </div>
 
       <!-- ✏️ À PERSONNALISER : adresse, téléphone, e-mail -->
       <div class="footer__cols">
         <div class="footer__col">
           <p class="footer__label">La fromagerie</p>
-          <p>Le Buron<br>[Numéro et rue]<br>63000 Clermont-Ferrand</p>
+          <p>Le Buron<br>9, rue des Saulées<br>63400 Chamalières</p>
         </div>
         <div class="footer__col">
           <p class="footer__label">Horaires</p>
-          <p>Du mardi au samedi<br>Dimanche matin<br><a class="link" href="#infos">Le détail</a></p>
+          <p>Du lundi au samedi<br>Fermé le dimanche<br><button class="link" type="button" data-hours-toggle>Le détail</button></p>
         </div>
         <div class="footer__col">
           <p class="footer__label">Contact</p>
-          <p><a class="link" href="tel:+33400000000">04&nbsp;XX&nbsp;XX&nbsp;XX&nbsp;XX</a><br><a class="link" href="mailto:contact@example.com">contact@example.com</a></p>
+          <p><a class="link" href="tel:+33473378885">04&nbsp;73&nbsp;37&nbsp;88&nbsp;85</a><br><a class="link" href="mailto:contact@example.com">contact@example.com</a></p>
         </div>
         <div class="footer__col">
           <p class="footer__label">Le site</p>
-          <p><a class="link" href="#fromages">Fromages</a><br><a class="link" href="#plateaux">Plateaux</a><br><a class="link" href="#recettes">Recettes</a></p>
+          <p><a class="link" href="fromages.html">Fromages</a><br><a class="link" href="recettes.html">Recettes</a><br><a class="link" href="commande.html">Click &amp; collect</a></p>
         </div>
       </div>
 
       <p class="footer__word" aria-hidden="true">Le Buron</p>
 
       <div class="footer__bottom">
-        <p>© <span data-year>2026</span> Le Buron · Fromagerie artisanale à Clermont-Ferrand</p>
+        <p>© <span data-year>2026</span> Le Buron · Fromagerie artisanale à Chamalières · Photos Pexels</p>
         <p class="footer__made">Fait avec du lait, du temps et de la patience.</p>
         <a class="footer__top" href="#top" data-magnetic aria-label="Retour en haut de page">
           <svg class="footer__top-ring" viewBox="0 0 100 100" aria-hidden="true">
@@ -1053,105 +1170,5 @@
     </div>
   </footer>
 
-  <!-- ============ Fiches recettes ============ -->
-  <dialog class="recipe" id="recipe-truffade" aria-labelledby="recipe-truffade-title">
-    <div class="recipe__inner" data-lenis-prevent>
-      <form method="dialog"><button class="recipe__close" type="submit" aria-label="Fermer la recette">×</button></form>
-      <p class="badge"><svg class="ast" aria-hidden="true"><use href="#ast"/></svg> Recette d’Auvergne</p>
-      <h2 class="h" id="recipe-truffade-title">Truffade</h2>
-      <p class="recipe__meta">Pour 4 personnes · 45 minutes</p>
-      <div class="recipe__cols">
-        <div>
-          <h3 class="recipe__sub">Ingrédients</h3>
-          <ul class="recipe__list">
-            <li>1 kg de pommes de terre à chair ferme</li>
-            <li>400 g de tomme fraîche de Cantal</li>
-            <li>2 gousses d’ail</li>
-            <li>2 c. à soupe de graisse de canard</li>
-            <li>100 g de lard fumé (facultatif)</li>
-            <li>Sel, poivre, persil</li>
-          </ul>
-        </div>
-        <div>
-          <h3 class="recipe__sub">Préparation</h3>
-          <ol class="recipe__steps">
-            <li>Épluchez les pommes de terre et coupez-les en fines rondelles. Rincez-les et séchez-les bien.</li>
-            <li>Faites chauffer la graisse dans une grande poêle, faites revenir le lard, puis ajoutez les pommes de terre. Laissez cuire 25 minutes à feu moyen en remuant, jusqu’à ce qu’elles soient tendres et dorées.</li>
-            <li>Ajoutez l’ail haché et poivrez.</li>
-            <li>À feu doux, ajoutez la tomme coupée en fines lamelles et mélangez délicatement jusqu’à ce qu’elle file.</li>
-            <li>Laissez dorer 2 à 3 minutes sans remuer, faites glisser dans le plat et parsemez de persil. Servez avec une salade verte.</li>
-          </ol>
-        </div>
-      </div>
-      <p class="recipe__tip"><strong>Le conseil du fromager&nbsp;:</strong> salez à la toute fin, la tomme et le lard apportent déjà leur sel.</p>
-    </div>
-  </dialog>
-
-  <dialog class="recipe" id="recipe-aligot" aria-labelledby="recipe-aligot-title">
-    <div class="recipe__inner" data-lenis-prevent>
-      <form method="dialog"><button class="recipe__close" type="submit" aria-label="Fermer la recette">×</button></form>
-      <p class="badge"><svg class="ast" aria-hidden="true"><use href="#ast"/></svg> Recette d’Aubrac</p>
-      <h2 class="h" id="recipe-aligot-title">Aligot</h2>
-      <p class="recipe__meta">Pour 4 personnes · 40 minutes</p>
-      <div class="recipe__cols">
-        <div>
-          <h3 class="recipe__sub">Ingrédients</h3>
-          <ul class="recipe__list">
-            <li>1 kg de pommes de terre (type bintje)</li>
-            <li>400 g de tomme fraîche de l’Aubrac</li>
-            <li>20 cl de crème fraîche épaisse</li>
-            <li>50 g de beurre</li>
-            <li>2 gousses d’ail</li>
-            <li>Sel, poivre</li>
-          </ul>
-        </div>
-        <div>
-          <h3 class="recipe__sub">Préparation</h3>
-          <ol class="recipe__steps">
-            <li>Faites cuire les pommes de terre épluchées dans l’eau salée avec l’ail, environ 25 minutes.</li>
-            <li>Égouttez et écrasez-les en purée au presse-purée (jamais au mixeur), avec l’ail.</li>
-            <li>Remettez sur feu doux et incorporez le beurre, puis la crème.</li>
-            <li>Ajoutez la tomme coupée en fines lamelles, en plusieurs fois, et «&nbsp;filez&nbsp;» l’aligot&nbsp;: soulevez et tournez vigoureusement avec une spatule en bois, en dessinant des 8, jusqu’à ce qu’il soit lisse, brillant et élastique.</li>
-            <li>Servez aussitôt, avec une saucisse grillée.</li>
-          </ol>
-        </div>
-      </div>
-      <p class="recipe__tip"><strong>Le conseil du fromager&nbsp;:</strong> l’aligot n’attend pas. Prévenez vos convives&nbsp;: on file, et on sert&nbsp;!</p>
-    </div>
-  </dialog>
-
-  <dialog class="recipe" id="recipe-tarte" aria-labelledby="recipe-tarte-title">
-    <div class="recipe__inner" data-lenis-prevent>
-      <form method="dialog"><button class="recipe__close" type="submit" aria-label="Fermer la recette">×</button></form>
-      <p class="badge"><svg class="ast" aria-hidden="true"><use href="#ast"/></svg> Recette du Livradois-Forez</p>
-      <h2 class="h" id="recipe-tarte-title">Tarte poire &amp; Fourme d’Ambert</h2>
-      <p class="recipe__meta">Pour 6 personnes · 50 minutes</p>
-      <div class="recipe__cols">
-        <div>
-          <h3 class="recipe__sub">Ingrédients</h3>
-          <ul class="recipe__list">
-            <li>1 pâte brisée</li>
-            <li>3 poires bien mûres</li>
-            <li>150 g de Fourme d’Ambert</li>
-            <li>3 œufs</li>
-            <li>20 cl de crème fraîche</li>
-            <li>1 poignée de cerneaux de noix</li>
-            <li>Poivre, une pincée de muscade</li>
-          </ul>
-        </div>
-        <div>
-          <h3 class="recipe__sub">Préparation</h3>
-          <ol class="recipe__steps">
-            <li>Préchauffez le four à 180&nbsp;°C. Foncez un moule avec la pâte et piquez le fond.</li>
-            <li>Épluchez les poires, coupez-les en lamelles et disposez-les en rosace.</li>
-            <li>Émiettez la Fourme d’Ambert par-dessus et parsemez de noix concassées.</li>
-            <li>Battez les œufs avec la crème, le poivre et la muscade, puis versez sur la garniture.</li>
-            <li>Enfournez 35 minutes, jusqu’à ce que la tarte soit bien dorée. Servez tiède avec une salade de mâche.</li>
-          </ol>
-        </div>
-      </div>
-      <p class="recipe__tip"><strong>Le conseil du fromager&nbsp;:</strong> inutile de saler, la Fourme s’en charge.</p>
-    </div>
-  </dialog>
 </body>
 </html>
