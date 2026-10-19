@@ -788,7 +788,7 @@
       const chars = [...word.textContent].map((ch) => {
         const span = document.createElement('span');
         span.className = 'char';
-        span.textContent = ch === ' ' ? ' ' : ch;
+        span.textContent = ch === ' ' ? '\u00a0' : ch;
         return span;
       });
       word.textContent = '';
