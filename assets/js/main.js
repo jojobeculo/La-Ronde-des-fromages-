@@ -1,5 +1,5 @@
 /* =========================================================================
-   Le Buron — animations & interactions
+   Au Buron — animations & interactions
    GSAP (ScrollTrigger, SplitText) + Lenis pour le défilement fluide.
    Tout le contenu reste lisible sans JavaScript ou en « mouvement réduit ».
    ========================================================================= */

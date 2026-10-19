@@ -1,4 +1,4 @@
-# Le Buron — fromagerie artisanale, Chamalières (Clermont-Ferrand)
+# Au Buron — fromagerie artisanale, Chamalières (Clermont-Ferrand)
 
 Site vitrine de quatre pages, très animé, inspiré de l’univers éditorial de Graza : fonds crème, encre olive, bandeaux moutarde et vert prairie, grands titres serif condensés et texte « machine à écrire ».
 

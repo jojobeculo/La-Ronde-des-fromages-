@@ -1,5 +1,5 @@
 /* =========================================================================
-   Le Buron — pages, fiches et commande
+   Au Buron — pages, fiches et commande
    Transitions entre pages, horaires, fiches fromages, recettes et click & collect.
    Les données viennent de assets/js/data.js.
    ========================================================================= */
@@ -41,7 +41,7 @@
      ======================================================================= */
   const curtain = $('.curtain');
   const curtainTitle = $('[data-curtain-title]');
-  const PAGE_NAMES = { 'index.html': 'Le Buron', 'fromages.html': 'Nos fromages', 'recettes.html': 'Recettes', 'commande.html': 'Click & collect' };
+  const PAGE_NAMES = { 'index.html': 'Au Buron', 'fromages.html': 'Nos fromages', 'recettes.html': 'Recettes', 'commande.html': 'Click & collect' };
   const pageOf = (url) => (url.pathname.split('/').pop() || 'index.html');
   const samePage = (url) => url.origin === location.origin && pageOf(url) === pageOf(location) && url.pathname.replace(/index\.html$/, '') === location.pathname.replace(/index\.html$/, '');
 
@@ -55,7 +55,7 @@
 
   const leave = (url, label) => {
     if (!curtain || reduceMotion) { location.href = url.href; return; }
-    if (curtainTitle) curtainTitle.textContent = label || PAGE_NAMES[pageOf(url)] || 'Le Buron';
+    if (curtainTitle) curtainTitle.textContent = label || PAGE_NAMES[pageOf(url)] || 'Au Buron';
     root.classList.remove('is-arriving', 'curtain-out');
     root.classList.add('curtain-in');
     try { sessionStorage.setItem('lb-curtain', curtainTitle ? curtainTitle.textContent : '1'); } catch (e) { /* rien */ }
@@ -93,6 +93,102 @@
   Promise.race([document.fonts ? document.fonts.ready : Promise.resolve(), new Promise((r) => setTimeout(r, 600))]).then(arrive);
   // retour arrière depuis le cache du navigateur : on retire le rideau
   window.addEventListener('pageshow', (e) => { if (e.persisted) root.classList.remove('curtain-in', 'is-arriving', 'curtain-out'); });
+
+  /* =======================================================================
+     Retours au clic : le bouton s’enfonce puis rebondit, une onde et des
+     éclats (trous de fromage, pastilles, astérisques) jaillissent du clic
+     ======================================================================= */
+  const CLICKABLE = 'button, .btn, .arrow-link, .link, .pill, .chip, .check, .tab, .filter, .cave-card, .recipe-tile, .cheese-card, .nav__logo, .menu a';
+  const BIT_COLORS = ['var(--mustard)', 'var(--green)', 'var(--lime)', 'var(--ink)', '#f3a76b'];
+  const rand = (a, b) => a + Math.random() * (b - a);
+  const canAnimate = !reduceMotion && typeof Element.prototype.animate === 'function';
+
+  const fxLayer = (host) => {
+    const layer = document.createElement('div');
+    layer.className = 'fx-layer';
+    layer.setAttribute('aria-hidden', 'true');
+    host.appendChild(layer);
+    // dans une fenêtre <dialog>, le calque peut être décalé : on compense
+    const r = layer.getBoundingClientRect();
+    return { layer, dx: -r.left, dy: -r.top };
+  };
+
+  const burst = (el, x, y) => {
+    const strong = el.matches('.btn--primary, [data-add], [type="submit"]');
+    const { layer, dx, dy } = fxLayer(el.closest('dialog[open]') || document.body);
+    const px = x + dx;
+    const py = y + dy;
+    const box = el.getBoundingClientRect();
+
+    const ring = document.createElement('span');
+    ring.className = 'fx-ring';
+    const size = Math.min(260, Math.max(70, box.width * 0.9));
+    Object.assign(ring.style, { left: `${px}px`, top: `${py}px`, width: `${size}px`, height: `${size}px` });
+    layer.appendChild(ring);
+    ring.animate([
+      { transform: 'translate(-50%, -50%) scale(0)', opacity: 0.9, borderWidth: '6px' },
+      { transform: 'translate(-50%, -50%) scale(1)', opacity: 0, borderWidth: '1px' },
+    ], { duration: 650, easing: 'cubic-bezier(.22, 1, .36, 1)', fill: 'forwards' });
+
+    const count = strong ? 16 : 10;
+    for (let i = 0; i < count; i++) {
+      const kind = ['dot', 'hole', 'ast'][i % 3];
+      const bit = document.createElement('span');
+      bit.className = `fx-bit fx-bit--${kind}`;
+      if (kind === 'ast') bit.innerHTML = AST;
+      const s = kind === 'ast' ? rand(12, 18) : rand(6, 13);
+      Object.assign(bit.style, { left: `${px}px`, top: `${py}px`, width: `${s}px`, height: `${s}px`, color: BIT_COLORS[i % BIT_COLORS.length] });
+      layer.appendChild(bit);
+      const angle = (i / count) * Math.PI * 2 + rand(-0.3, 0.3);
+      const dist = strong ? rand(70, 150) : rand(40, 95);
+      const tx = Math.cos(angle) * dist;
+      const ty = Math.sin(angle) * dist;
+      const rot = rand(-260, 260);
+      bit.animate([
+        { transform: 'translate(-50%, -50%) scale(0.2) rotate(0deg)', opacity: 1, easing: 'cubic-bezier(.15, .85, .3, 1)' },
+        { transform: `translate(calc(-50% + ${tx * 0.8}px), calc(-50% + ${ty * 0.8}px)) scale(1.15) rotate(${rot * 0.6}deg)`, opacity: 1, offset: 0.4, easing: 'cubic-bezier(.5, 0, .75, 0)' },
+        { transform: `translate(calc(-50% + ${tx}px), calc(-50% + ${ty + 34}px)) scale(0) rotate(${rot}deg)`, opacity: 0.6 },
+      ], { duration: rand(750, 1050), fill: 'forwards' });
+    }
+    setTimeout(() => layer.remove(), 1200);
+  };
+
+  if (canAnimate) {
+    let pressed = null;
+    let pressAnim = null;
+    const release = () => {
+      if (!pressed) return;
+      const el = pressed;
+      pressed = null;
+      pressAnim.cancel();
+      el.animate([{ scale: 0.92 }, { scale: 1.06 }, { scale: 0.98 }, { scale: 1 }], { duration: 520, easing: 'ease-out' });
+    };
+    document.addEventListener('pointerdown', (e) => {
+      if (e.button !== 0) return;
+      const el = e.target.closest(CLICKABLE);
+      if (!el || el.disabled) return;
+      if (pressed) release();
+      pressed = el;
+      pressAnim = el.animate([{ scale: 1 }, { scale: 0.92 }], { duration: 140, easing: 'ease-out', fill: 'forwards' });
+    });
+    ['pointerup', 'pointercancel'].forEach((t) => document.addEventListener(t, release));
+
+    let last = { el: null, t: 0 };
+    document.addEventListener('click', (e) => {
+      const el = e.target.closest(CLICKABLE);
+      if (!el || el.disabled) return;
+      // un clic sur un <label> déclenche aussi un clic sur sa case : un seul éclat
+      const now = performance.now();
+      if (last.el === el && now - last.t < 120) return;
+      last = { el, t: now };
+      let { clientX: x, clientY: y } = e;
+      if (!e.detail || (!x && !y)) { // clavier : depuis le centre de l’élément
+        const r = el.getBoundingClientRect();
+        x = r.left + r.width / 2; y = r.top + r.height / 2;
+      }
+      burst(el, x, y);
+    }, true);
+  }
 
   /* =======================================================================
      Horaires : statut en direct et panneau
@@ -635,10 +731,40 @@
       storage.set('lb-cart', cart);
       renderCart(true);
     };
+    // un petit fromage s’envole du bouton jusqu’au total du panier
+    const flyToCart = (from) => {
+      if (!canAnimate) return;
+      const a = from.getBoundingClientRect();
+      const b = totalEl.getBoundingClientRect();
+      const x0 = a.left + a.width / 2; const y0 = a.top + a.height / 2;
+      const x1 = Math.min(Math.max(b.left + b.width / 2, 20), innerWidth - 20);
+      const y1 = Math.min(Math.max(b.top + b.height / 2, 20), innerHeight - 20);
+      const lift = Math.min(y0, y1) - Math.max(90, Math.abs(x1 - x0) * 0.35);
+      const { layer, dx, dy } = fxLayer(document.body);
+      const token = document.createElement('span');
+      token.className = 'fx-token';
+      Object.assign(token.style, { left: `${dx}px`, top: `${dy}px` });
+      layer.appendChild(token);
+      const frames = [];
+      for (let i = 0; i <= 16; i++) {
+        const t = i / 16;
+        const x = (1 - t) * (1 - t) * x0 + 2 * (1 - t) * t * ((x0 + x1) / 2) + t * t * x1;
+        const y = (1 - t) * (1 - t) * y0 + 2 * (1 - t) * t * lift + t * t * y1;
+        frames.push({ transform: `translate(${x}px, ${y}px) translate(-50%, -50%) rotate(${t * 540}deg) scale(${1 + Math.sin(t * Math.PI) * 0.5 - t * 0.5})` });
+      }
+      token.animate(frames, { duration: 850, easing: 'cubic-bezier(.45, 0, .25, 1)', fill: 'forwards' }).finished.then(() => {
+        layer.remove();
+        burst(totalEl, x1, y1);
+        totalEl.animate([{ scale: 1 }, { scale: 1.35 }, { scale: 0.95 }, { scale: 1 }], { duration: 500, easing: 'ease-out' });
+      }).catch(() => layer.remove());
+    };
+
     builder.addEventListener('click', (e) => {
       const btn = e.target.closest('[data-add]');
       if (!btn) return;
       const kind = btn.dataset.add;
+      const before = cart.length;
+      setTimeout(() => { if (cart.length > before) flyToCart(btn); });
       if (kind === 'plateau') {
         const p = plateau();
         if (!p.ids.length) return;

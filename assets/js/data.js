@@ -1,11 +1,11 @@
 /* =========================================================================
-   Le Buron — données du site (fromages, recettes, boutique)
+   Au Buron — données du site (fromages, recettes, boutique)
    ✏️ À PERSONNALISER : tout ce qui est ici s’affiche directement sur le site.
    Les prix sont indicatifs (€ TTC au kilo) : ajustez-les à vos tarifs réels.
    ========================================================================= */
 window.LB_DATA = {
   shop: {
-    name: 'Le Buron',
+    name: 'Au Buron',
     address: '9, rue des Saulées',
     city: '63400 Chamalières',
     phone: '04 73 37 88 85',
@@ -350,7 +350,7 @@ window.LB_DATA = {
       tip: 'Remplacez le Bleu d’Auvergne par de la Fourme d’Ambert pour une version plus douce.',
     },
     {
-      id: 'plateau-du-dimanche', name: 'Le plateau du dimanche', type: 'apero', region: 'Le Buron', serves: 6, prep: 15, cook: 0, level: 'Très facile',
+      id: 'plateau-du-dimanche', name: 'Le plateau du dimanche', type: 'apero', region: 'Au Buron', serves: 6, prep: 15, cook: 0, level: 'Très facile',
       photo: 'plateau-bois', art: null, cheeses: ['saint-nectaire', 'cantal-entre-deux', 'fourme-ambert', 'salers', 'gaperon'],
       intro: 'Pas vraiment une recette, plutôt une méthode : cinq fromages, du plus doux au plus fort, et quelques accompagnements bien choisis.',
       ingredients: [
