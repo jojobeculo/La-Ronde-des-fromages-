@@ -37,6 +37,13 @@
   const photo = (name, alt, cls = '', sizes = '(max-width: 900px) 100vw, 50vw') =>
     `<img class="${cls}" src="assets/photos/${name}.jpg" srcset="assets/photos/${name}-s.jpg 640w, assets/photos/${name}.jpg 1400w" sizes="${sizes}" alt="${esc(alt)}" loading="lazy" decoding="async">`;
 
+  // crédit de la photo (auteur et licence), affiché sous chaque photo
+  const photoCredit = (name) => {
+    const c = (D.photoCredits || {})[name];
+    if (!c) return 'Photo · Pexels';
+    return `Photo : <a href="${esc(c.url)}" target="_blank" rel="noopener">${esc(c.by)}</a> · ${esc(c.license)}`;
+  };
+
   /* =======================================================================
      Transitions entre les pages
      ======================================================================= */
@@ -364,7 +371,7 @@
     const addHref = `commande.html?add=${c.id}`;
     dlg.innerHTML = `<div class="sheet__inner" data-lenis-prevent>
       <form method="dialog"><button class="sheet__close" type="submit" aria-label="Fermer la fiche">×</button></form>
-      <figure class="sheet__photo">${photo(c.photo, `Photo d’illustration pour le ${c.name}`, '', '(max-width: 900px) 100vw, 45vw')}<figcaption>Photo d’illustration · Pexels</figcaption>
+      <figure class="sheet__photo">${photo(c.photo, c.name, '', '(max-width: 900px) 100vw, 45vw')}<figcaption>${photoCredit(c.photo)}</figcaption>
         <div class="sheet__art">${artSvg(c)}</div>
       </figure>
       <div class="sheet__body">
@@ -454,6 +461,7 @@
       <button class="sheet__close recipe-view__close" type="button" data-recipe-close aria-label="Fermer la recette">×</button>
       <header class="recipe-view__hero">
         ${photo(r.photo, r.name, 'recipe-view__img', '100vw')}
+        <p class="recipe-view__credit">${photoCredit(r.photo)}</p>
         <div class="recipe-view__hero-text">
           <p class="badge">${AST} ${esc(D.recipeTypes[r.type])} · ${esc(r.region)}</p>
           <h2 class="recipe-view__title" id="recipe-view-title">${esc(r.name)}</h2>

@@ -38,7 +38,7 @@ window.LB_DATA = {
     {
       id: 'saint-nectaire', name: 'Saint-Nectaire fermier', family: 'pressee', aop: true, price: 26,
       milk: 'Vache, lait cru', region: 'Monts Dore & Cézallier', aging: '28 jours minimum, souvent 6 à 8 semaines',
-      art: 'sn', photo: 'cave-coupe',
+      art: 'sn', photo: 'fr-saint-nectaire',
       short: 'Souple et onctueux, un goût de noisette et de sous-bois.',
       text: 'Fabriqué deux fois par jour à la ferme, juste après la traite, puis affiné en cave sur des planches. Sa croûte fleurie de moisissures blanches, jaunes et rouges protège une pâte souple qui fond sur la langue. Le fermier se reconnaît à sa plaque de caséine verte ovale, le laitier à sa plaque carrée.',
       taste: 'Noisette, champignon, cave humide',
@@ -47,7 +47,7 @@ window.LB_DATA = {
     {
       id: 'cantal-jeune', name: 'Cantal jeune', family: 'pressee', aop: true, price: 17,
       milk: 'Vache', region: 'Cantal & Monts du Cantal', aging: '30 à 60 jours',
-      art: 'ca', photo: 'cave-meules',
+      art: 'ca', photo: 'fr-cantal-jeune',
       short: 'Doux, lactique, à la pâte souple et fraîche.',
       text: 'L’un des plus vieux fromages de France : on dit que Pline l’Ancien le vantait déjà. Jeune, le Cantal garde la douceur du lait et une texture tendre, idéale pour le goûter des enfants, les sandwichs ou la cuisine.',
       taste: 'Beurre frais, crème, une pointe d’acidité',
@@ -56,7 +56,7 @@ window.LB_DATA = {
     {
       id: 'cantal-entre-deux', name: 'Cantal entre-deux', family: 'pressee', aop: true, price: 20,
       milk: 'Vache', region: 'Cantal & Monts du Cantal', aging: '90 à 210 jours',
-      art: 'ca', photo: 'cave-meules',
+      art: 'ca', photo: 'fr-cantal-entre-deux',
       short: 'Le juste milieu : plus de caractère, toujours fondant.',
       text: 'À mi-chemin entre la douceur du jeune et la puissance du vieux, l’entre-deux développe une croûte grise et une pâte plus jaune. C’est le Cantal de tous les jours, celui qu’on coupe en larges tranches sur le pain.',
       taste: 'Noisette, lait chaud, finale légèrement piquante',
@@ -65,7 +65,7 @@ window.LB_DATA = {
     {
       id: 'cantal-vieux', name: 'Cantal vieux', family: 'pressee', aop: true, price: 25,
       milk: 'Vache', region: 'Cantal & Monts du Cantal', aging: 'Plus de 240 jours',
-      art: 'ca', photo: 'cave-selection',
+      art: 'ca', photo: 'fr-cantal-vieux',
       short: 'Franc, puissant et piquant, pour les amateurs.',
       text: 'Après plus de huit mois de cave, la pâte se fait cassante et les arômes s’intensifient. Un fromage de caractère à déguster en fines lamelles, ou râpé sur une soupe au fromage.',
       taste: 'Puissant, poivré, sous-bois',
@@ -74,7 +74,7 @@ window.LB_DATA = {
     {
       id: 'salers', name: 'Salers', family: 'pressee', aop: true, price: 30,
       milk: 'Vache, lait cru', region: 'Monts du Cantal', aging: '3 mois minimum, jusqu’à 18 mois et plus',
-      art: 'sa', photo: 'vache-salers',
+      art: 'sa', photo: 'fr-salers',
       short: 'Le fromage des estives, fruité et puissant.',
       text: 'Fabriqué uniquement à la ferme, du 15 avril au 15 novembre, quand les vaches pâturent l’herbe et les fleurs des montagnes. Le lait est travaillé dans la gerle, une cuve en bois. Chaque meule porte une plaque rouge « Salers ».',
       taste: 'Fruité, herbacé, notes de fleurs et de noisette',
@@ -101,7 +101,7 @@ window.LB_DATA = {
     {
       id: 'fourme-ambert', name: 'Fourme d’Ambert', family: 'persillee', aop: true, price: 19,
       milk: 'Vache', region: 'Monts du Forez & Livradois', aging: '28 jours minimum',
-      art: 'fa', photo: 'bleu-coin',
+      art: 'fa', photo: 'fr-fourme-ambert',
       short: 'L’un des bleus les plus doux, crémeux et fruité.',
       text: 'Haute et élancée, la Fourme d’Ambert est fabriquée sur les hauteurs du Forez. Sa pâte ivoire, délicatement persillée, est d’une grande douceur : c’est le bleu idéal pour ceux qui pensent ne pas aimer les bleus.',
       taste: 'Crème, fruit sec, persillage discret',
@@ -137,7 +137,7 @@ window.LB_DATA = {
     {
       id: 'brie-meaux', name: 'Brie de Meaux', family: 'fleurie', aop: true, price: 27,
       milk: 'Vache, lait cru', region: 'Île-de-France', aging: '4 semaines minimum',
-      art: 'soft', colors: { rind: '#f5efe2', top: '#faf6ec', paste: '#fbe6a8', spot: '#d9b98c' }, photo: 'brie-jambon',
+      art: 'soft', colors: { rind: '#f5efe2', top: '#faf6ec', paste: '#fbe6a8', spot: '#d9b98c' }, photo: 'fr-brie-meaux',
       short: 'Crémeux, fruité, à la croûte fleurie blanche.',
       text: 'Une grande galette à croûte fleurie, coulante à cœur lorsqu’elle est à point. Nous vous la coupons à la demande, en vous indiquant si vous la préférez jeune et crayeuse ou bien faite et fondante.',
       taste: 'Champignon frais, crème, noisette',
@@ -146,7 +146,7 @@ window.LB_DATA = {
     {
       id: 'reblochon', name: 'Reblochon de Savoie', family: 'fleurie', aop: true, price: 23,
       milk: 'Vache, lait cru', region: 'Savoie', aging: '15 jours minimum',
-      art: 'soft', colors: { rind: '#e8c592', top: '#efd2a6', paste: '#fdeec2', spot: '#d2a56c' }, photo: 'croute-fleurie',
+      art: 'soft', colors: { rind: '#e8c592', top: '#efd2a6', paste: '#fdeec2', spot: '#d2a56c' }, photo: 'fr-reblochon',
       short: 'Fondant et doux, roi de la tartiflette.',
       text: 'Un petit disque à la croûte lavée, couverte d’un fin duvet blanc. Sa pâte onctueuse a un goût de noisette ; il se déguste tel quel ou fondu dans une tartiflette.',
       taste: 'Noisette, crème, légère amertume de croûte',
@@ -164,7 +164,7 @@ window.LB_DATA = {
     {
       id: 'chevre-fermier', name: 'Chèvre fermier', family: 'chevre', aop: false, price: 32,
       milk: 'Chèvre, lait cru', region: 'Fermes du Puy-de-Dôme', aging: 'Frais à sec, selon votre goût',
-      art: 'goat', colors: { rind: '#f6f0e4', top: '#fbf8f0', paste: '#fffcf4', spot: '#d9cdb4' }, photo: 'plateau-chevre',
+      art: 'goat', colors: { rind: '#f6f0e4', top: '#fbf8f0', paste: '#fffcf4', spot: '#d9cdb4' }, photo: 'fr-chevre',
       short: 'Frais, crémeux ou sec : chaque semaine selon la ferme.',
       text: 'Nous travaillons des fromages de chèvre fermiers, à des degrés d’affinage différents : frais et acidulé, demi-sec et crémeux, ou sec et puissant. Demandez au comptoir ce qui est arrivé cette semaine.',
       taste: 'Acidulé quand il est frais, noisette quand il est sec',
@@ -173,7 +173,7 @@ window.LB_DATA = {
     {
       id: 'comte', name: 'Comté 18 mois', family: 'pressee', aop: true, price: 32,
       milk: 'Vache, lait cru', region: 'Massif du Jura', aging: '18 mois',
-      art: 'disc', colors: { rind: '#c99b5c', top: '#d6ad72', paste: '#fbd77a', spot: '#b68548' }, photo: 'fromage-vin',
+      art: 'disc', colors: { rind: '#c99b5c', top: '#d6ad72', paste: '#fbd77a', spot: '#b68548' }, photo: 'fr-comte',
       short: 'Fruité, cristallin, d’une grande longueur.',
       text: 'Un grand classique de la cave, choisi à 18 mois d’affinage : la pâte devient légèrement cristalline, avec de petits grains de tyrosine, et développe des notes de fruits secs et de beurre noisette.',
       taste: 'Fruits secs, beurre noisette, caramel',
@@ -373,4 +373,192 @@ window.LB_DATA = {
       tip: 'Coupez le Saint-Nectaire en parts comme un gâteau, et le Cantal en tranches fines : chacun garde ainsi sa part de croûte et de cœur.',
     },
   ],
+  // Crédits des photos (auteur, licence, page source) — généré, voir assets/photos/CREDITS.md
+  photoCredits: {
+    "aligot": {
+      "by": "*_*",
+      "license": "CC BY 2.0",
+      "url": "https://www.flickr.com/photos/22539273@N00/31771137746"
+    },
+    "bleu-assiette": {
+      "by": "Pexels",
+      "license": "licence Pexels",
+      "url": "https://www.pexels.com/photo/15200488/"
+    },
+    "bleu-bloc": {
+      "by": "Pexels",
+      "license": "licence Pexels",
+      "url": "https://www.pexels.com/photo/6660061/"
+    },
+    "bleu-coin": {
+      "by": "Pexels",
+      "license": "licence Pexels",
+      "url": "https://www.pexels.com/photo/8250417/"
+    },
+    "bleu-planche": {
+      "by": "Pexels",
+      "license": "licence Pexels",
+      "url": "https://www.pexels.com/photo/4109943/"
+    },
+    "bleu-trio": {
+      "by": "Pexels",
+      "license": "licence Pexels",
+      "url": "https://www.pexels.com/photo/4109938/"
+    },
+    "brie-jambon": {
+      "by": "Pexels",
+      "license": "licence Pexels",
+      "url": "https://www.pexels.com/photo/5732759/"
+    },
+    "cave-coupe": {
+      "by": "Pexels",
+      "license": "licence Pexels",
+      "url": "https://www.pexels.com/photo/808196/"
+    },
+    "cave-meules": {
+      "by": "Pexels",
+      "license": "licence Pexels",
+      "url": "https://www.pexels.com/photo/14544601/"
+    },
+    "cave-selection": {
+      "by": "Pexels",
+      "license": "licence Pexels",
+      "url": "https://www.pexels.com/photo/10585043/"
+    },
+    "croute-fleurie": {
+      "by": "Pexels",
+      "license": "licence Pexels",
+      "url": "https://www.pexels.com/photo/11126267/"
+    },
+    "croutes": {
+      "by": "Pexels",
+      "license": "licence Pexels",
+      "url": "https://www.pexels.com/photo/4559174/"
+    },
+    "fondue": {
+      "by": "Pexels",
+      "license": "licence Pexels",
+      "url": "https://www.pexels.com/photo/7491876/"
+    },
+    "fondue-pain": {
+      "by": "Pexels",
+      "license": "licence Pexels",
+      "url": "https://www.pexels.com/photo/12664805/"
+    },
+    "fondue-pain-2": {
+      "by": "Pexels",
+      "license": "licence Pexels",
+      "url": "https://www.pexels.com/photo/12664810/"
+    },
+    "fr-brie-meaux": {
+      "by": "inra.dist",
+      "license": "CC BY 2.0",
+      "url": "https://www.flickr.com/photos/135897188@N04/25671794096"
+    },
+    "fr-cantal-entre-deux": {
+      "by": "julienfour",
+      "license": "CC0",
+      "url": "https://www.flickr.com/photos/156217834@N02/26280943128"
+    },
+    "fr-cantal-jeune": {
+      "by": "Silverman68",
+      "license": "CC BY 2.0",
+      "url": "https://www.flickr.com/photos/29120766@N07/5422853344"
+    },
+    "fr-cantal-vieux": {
+      "by": "DEWEGGIS",
+      "license": "CC BY-ND 2.0",
+      "url": "https://www.flickr.com/photos/72332627@N05/15083598221"
+    },
+    "fr-chevre": {
+      "by": "Sunfox",
+      "license": "CC BY-SA 2.0",
+      "url": "https://www.flickr.com/photos/24816568@N00/4617951807"
+    },
+    "fr-comte": {
+      "by": "leszed.com",
+      "license": "CC BY-SA 2.0",
+      "url": "https://www.flickr.com/photos/131857276@N03/16768910266"
+    },
+    "fr-fourme-ambert": {
+      "by": "avlxyz",
+      "license": "CC BY-SA 2.0",
+      "url": "https://www.flickr.com/photos/10559879@N00/544000085"
+    },
+    "fr-reblochon": {
+      "by": "srboisvert",
+      "license": "CC BY 2.0",
+      "url": "https://www.flickr.com/photos/35034346289@N01/5901507691"
+    },
+    "fr-saint-nectaire": {
+      "by": "julienfour",
+      "license": "CC0",
+      "url": "https://www.flickr.com/photos/156217834@N02/28369657039"
+    },
+    "fr-salers": {
+      "by": "inra.dist",
+      "license": "CC BY 2.0",
+      "url": "https://www.flickr.com/photos/135897188@N04/25605244751"
+    },
+    "fromage-vin": {
+      "by": "Pexels",
+      "license": "licence Pexels",
+      "url": "https://www.pexels.com/photo/8472746/"
+    },
+    "pate-molle": {
+      "by": "Pexels",
+      "license": "licence Pexels",
+      "url": "https://www.pexels.com/photo/6660243/"
+    },
+    "patranque": {
+      "by": "Pexels",
+      "license": "licence Pexels",
+      "url": "https://www.pexels.com/photo/37448233/"
+    },
+    "plateau-bois": {
+      "by": "Pexels",
+      "license": "licence Pexels",
+      "url": "https://www.pexels.com/photo/2992308/"
+    },
+    "plateau-charcuterie": {
+      "by": "Pexels",
+      "license": "licence Pexels",
+      "url": "https://www.pexels.com/photo/28572189/"
+    },
+    "plateau-chevre": {
+      "by": "Pexels",
+      "license": "licence Pexels",
+      "url": "https://www.pexels.com/photo/6660125/"
+    },
+    "plateau-rustique": {
+      "by": "Pexels",
+      "license": "licence Pexels",
+      "url": "https://www.pexels.com/photo/29068724/"
+    },
+    "salade-noix": {
+      "by": "jules:stonesoup",
+      "license": "CC BY 2.0",
+      "url": "https://www.flickr.com/photos/58367355@N00/5939037091"
+    },
+    "tarte-poire": {
+      "by": "bloggyboulga",
+      "license": "CC BY 2.0",
+      "url": "https://www.flickr.com/photos/88183497@N00/395216980"
+    },
+    "truffade": {
+      "by": "*_*",
+      "license": "CC BY 2.0",
+      "url": "https://www.flickr.com/photos/22539273@N00/32304267042"
+    },
+    "vache-salers": {
+      "by": "Pexels",
+      "license": "licence Pexels",
+      "url": "https://www.pexels.com/photo/18978636/"
+    },
+    "vaches-mont-dore": {
+      "by": "Pexels",
+      "license": "licence Pexels",
+      "url": "https://www.pexels.com/photo/18978688/"
+    }
+  },
 };

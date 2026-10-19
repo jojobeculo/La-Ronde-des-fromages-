@@ -1362,3 +1362,12 @@ button.link { font: inherit; color: inherit; cursor: pointer; }
 /* ---------- Bouton animations du pied de page ---------- */
 .footer__motion { color: inherit; font: inherit; font-size: 13px; opacity: .8; }
 .footer__motion:hover, .footer__motion:focus-visible { opacity: 1; }
+
+/* ---------- Crédits photo ---------- */
+.sheet__photo figcaption a, .recipe-view__credit a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+.recipe-view__credit {
+  position: absolute; z-index: 2; left: 14px; top: 14px; margin: 0;
+  padding: 5px 10px; border-radius: var(--radius-pill);
+  background: rgba(255, 244, 236, .88); color: var(--ink); font-size: 11px; letter-spacing: .04em;
+}
+@media (max-width: 640px) { .recipe-view__credit { font-size: 10px; } }
