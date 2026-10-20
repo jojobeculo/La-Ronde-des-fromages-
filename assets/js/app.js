@@ -61,7 +61,31 @@
     else window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
   };
 
+  // arrivée sur une page par un lien du site : on démarre en haut de la page
+  // (sauf lien vers une section, ex. index.html#infos). Sans ça, Safari ou la
+  // fenêtre qui affiche le site (aperçu) peuvent garder l’ancienne position.
+  const navArrival = (() => {
+    try { const v = sessionStorage.getItem('lb-nav'); sessionStorage.removeItem('lb-nav'); return !!v; } catch (e) { return false; }
+  })();
+  if (navArrival && !location.hash) {
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+    const toTop = () => {
+      window.scrollTo(0, 0);
+      // aussi pour la fenêtre qui contient le site, s’il est affiché dans un cadre
+      const pad = root.style.scrollPaddingTop;
+      root.style.scrollPaddingTop = '0px';
+      try { root.scrollIntoView({ block: 'start', behavior: 'instant' }); } catch (e) { /* ancien navigateur */ }
+      root.style.scrollPaddingTop = pad;
+      const lenis = window.LB && window.LB.lenis;
+      if (lenis) lenis.scrollTo(0, { immediate: true, force: true });
+    };
+    toTop();
+    requestAnimationFrame(toTop);
+    window.addEventListener('load', () => setTimeout(toTop, 0), { once: true });
+  }
+
   const leave = (url, label) => {
+    try { sessionStorage.setItem('lb-nav', '1'); } catch (e) { /* rien */ }
     if (!curtain || reduceMotion) { location.href = url.href; return; }
     if (curtainTitle) curtainTitle.textContent = label || PAGE_NAMES[pageOf(url)] || 'La Ronde des Fromages';
     root.classList.remove('is-arriving', 'curtain-out');
@@ -141,7 +165,7 @@
       if (kind === 'success') setTimeout(() => label.click(), 110);
     };
   })();
-  const HAPTIC = '.btn, [data-add], [data-hours-toggle], .nav__burger, .nav__links a, .menu a, .tab, .filter, .chip, .check, .step, [data-cut-step], .stepper button, [data-cheese-open], [data-recipe-open], .phone-order, .pill, .sheet__close, [data-remove], [data-motion-toggle]';
+  const HAPTIC = '.cal__day, .cal__nav, .slot, .btn, [data-add], [data-hours-toggle], .nav__burger, .nav__links a, .menu a, .tab, .filter, .chip, .check, .step, [data-cut-step], .stepper button, [data-cheese-open], [data-recipe-open], .phone-order, .pill, .sheet__close, [data-remove], [data-motion-toggle]';
   if (touchDevice) {
     let lastHaptic = { el: null, t: 0 };
     document.addEventListener('click', (e) => {
@@ -869,28 +893,97 @@
       renderCart();
     });
 
-    /* --- retrait : jour et créneaux selon les horaires --- */
+    /* --- retrait : calendrier et créneaux, seuls les jours d’ouverture sont cliquables --- */
     const dateEl = $('#pickup-date');
     const slotEl = $('#pickup-slot');
+    const cal = $('[data-cal]');
+    const calGrid = $('[data-cal-grid]', cal);
+    const calMonth = $('[data-cal-month]', cal);
+    const calPrev = $('[data-cal-prev]', cal);
+    const calNext = $('[data-cal-next]', cal);
+    const slotsEl = $('[data-slots]');
+    const slotDayEl = $('[data-slot-day]');
     const iso = (d) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
-    const tomorrow = new Date(); tomorrow.setDate(tomorrow.getDate() + 1);
-    // premier jour ouvert à partir de demain
-    const firstOpen = new Date(tomorrow);
-    for (let i = 0; i < 7 && !(schedule[firstOpen.getDay()] || []).length; i++) firstOpen.setDate(firstOpen.getDate() + 1);
-    dateEl.min = iso(tomorrow);
-    const maxDate = new Date(); maxDate.setDate(maxDate.getDate() + 60);
-    dateEl.max = iso(maxDate);
-    dateEl.value = iso(firstOpen);
-    const renderSlots = () => {
-      const d = dateEl.value ? new Date(`${dateEl.value}T12:00:00`) : null;
-      const ranges = d ? schedule[d.getDay()] || [] : [];
-      if (!ranges.length) { slotEl.innerHTML = '<option value="">Fermé ce jour-là</option>'; slotEl.disabled = true; return; }
-      slotEl.disabled = false;
-      const opts = [];
-      ranges.forEach(([a, b]) => { for (let t = a + 30; t <= b - 30; t += 30) opts.push(`${fmtTime(t)} – ${fmtTime(t + 30)}`); });
-      slotEl.innerHTML = opts.map((o) => `<option>${o}</option>`).join('');
+    const dayStart = (d) => new Date(d.getFullYear(), d.getMonth(), d.getDate());
+    const addDays = (d, n) => new Date(d.getFullYear(), d.getMonth(), d.getDate() + n);
+    const today = dayStart(new Date());
+    const firstDay = addDays(today, 1); // retrait à partir de demain
+    const lastDay = addDays(today, 60);
+    const isOpenDay = (d) => d >= firstDay && d <= lastDay && (schedule[d.getDay()] || []).length > 0;
+    let selected = firstDay;
+    for (let k = 0; k < 14 && !isOpenDay(selected); k++) selected = addDays(selected, 1);
+    let view = new Date(selected.getFullYear(), selected.getMonth(), 1);
+    const longDate = (d) => d.toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long' });
+
+    const renderCal = (dir = 0) => {
+      const label = view.toLocaleDateString('fr-FR', { month: 'long', year: 'numeric' });
+      calMonth.textContent = label[0].toUpperCase() + label.slice(1);
+      calPrev.disabled = view <= new Date(firstDay.getFullYear(), firstDay.getMonth(), 1);
+      calNext.disabled = view >= new Date(lastDay.getFullYear(), lastDay.getMonth(), 1);
+      const lead = (view.getDay() + 6) % 7; // semaine du lundi au dimanche
+      const days = new Date(view.getFullYear(), view.getMonth() + 1, 0).getDate();
+      let html = '<span class="cal__blank"></span>'.repeat(lead);
+      for (let n = 1; n <= days; n++) {
+        const d = new Date(view.getFullYear(), view.getMonth(), n);
+        const open = isOpenDay(d);
+        const isSel = +d === +selected;
+        const cls = ['cal__day', open ? '' : 'is-off', isSel ? 'is-selected' : '', +d === +today ? 'is-today' : ''].filter(Boolean).join(' ');
+        const why = open ? '' : (d < firstDay ? ', indisponible' : d > lastDay ? ', trop loin' : ', boutique fermée');
+        html += `<button class="${cls}" type="button" data-day="${iso(d)}" aria-label="${longDate(d)}${why}" aria-pressed="${isSel}" tabindex="${isSel ? 0 : -1}"${open ? '' : ' disabled'}>${n}</button>`;
+      }
+      calGrid.innerHTML = html;
+      if (!$('.cal__day[tabindex="0"]', calGrid)) { const f = $('.cal__day:not([disabled])', calGrid); if (f) f.tabIndex = 0; }
+      if (dir && !reduceMotion) { calGrid.classList.remove('is-from-left', 'is-from-right'); void calGrid.offsetWidth; calGrid.classList.add(dir > 0 ? 'is-from-right' : 'is-from-left'); }
     };
-    dateEl.addEventListener('change', renderSlots);
+
+    const renderSlots = () => {
+      dateEl.value = iso(selected);
+      slotDayEl.textContent = `· ${longDate(selected)}`;
+      const ranges = schedule[selected.getDay()] || [];
+      const previous = slotEl.value;
+      const groups = { 'Matin': [], 'Après-midi': [] };
+      ranges.forEach(([a, b]) => { for (let t = a + 30; t <= b - 30; t += 30) groups[t < 13 * 60 ? 'Matin' : 'Après-midi'].push(`${fmtTime(t)} – ${fmtTime(t + 30)}`); });
+      const all = [].concat(groups['Matin'], groups['Après-midi']);
+      slotEl.value = all.includes(previous) ? previous : (all[0] || '');
+      let i = 0;
+      slotsEl.innerHTML = Object.entries(groups).filter(([, list]) => list.length).map(([name, list]) => `<div class="slots__group"><p class="slots__name">${name}</p><div class="slots__list">${list.map((sl) => `<button class="slot${sl === slotEl.value ? ' is-selected' : ''}" type="button" data-slot="${sl}" aria-pressed="${sl === slotEl.value}" aria-label="${sl.replace(' – ', ' à ')}" style="--i:${i++}">${sl.split(' – ')[0]}</button>`).join('')}</div></div>`).join('');
+    };
+
+    const selectDay = (d, focus) => {
+      selected = d;
+      if (d.getMonth() !== view.getMonth() || d.getFullYear() !== view.getFullYear()) {
+        const dir = d > view ? 1 : -1;
+        view = new Date(d.getFullYear(), d.getMonth(), 1);
+        renderCal(dir);
+      } else renderCal();
+      renderSlots();
+      if (focus) { const b = $(`[data-day="${iso(d)}"]`, calGrid); if (b) b.focus(); }
+      errorEl.hidden = true;
+    };
+
+    calGrid.addEventListener('click', (e) => {
+      const b = e.target.closest('.cal__day');
+      if (!b || b.disabled) return;
+      selectDay(new Date(`${b.dataset.day}T00:00:00`));
+    });
+    // clavier : flèches pour passer d’un jour ouvert à l’autre
+    calGrid.addEventListener('keydown', (e) => {
+      const step = { ArrowLeft: -1, ArrowRight: 1, ArrowUp: -7, ArrowDown: 7 }[e.key];
+      if (!step) return;
+      e.preventDefault();
+      let d = selected;
+      for (let k = 0; k < 70; k++) { d = addDays(d, step); if (d < firstDay || d > lastDay) return; if (isOpenDay(d)) break; }
+      if (isOpenDay(d)) selectDay(d, true);
+    });
+    calPrev.addEventListener('click', () => { view = new Date(view.getFullYear(), view.getMonth() - 1, 1); renderCal(-1); });
+    calNext.addEventListener('click', () => { view = new Date(view.getFullYear(), view.getMonth() + 1, 1); renderCal(1); });
+    slotsEl.addEventListener('click', (e) => {
+      const b = e.target.closest('.slot');
+      if (!b) return;
+      slotEl.value = b.dataset.slot;
+      $$('.slot', slotsEl).forEach((x) => { const on = x === b; x.classList.toggle('is-selected', on); x.setAttribute('aria-pressed', String(on)); });
+    });
+    renderCal();
     renderSlots();
 
     const orderText = () => {
@@ -913,7 +1006,7 @@
       const f = new FormData(form);
       const issues = [];
       if (!cart.length) issues.push('ajoutez au moins un article à votre panier');
-      if (!f.get('date') || slotEl.disabled) issues.push('choisissez un jour d’ouverture');
+      if (!f.get('date') || !f.get('slot')) issues.push('choisissez un jour et une heure de retrait');
       if (!String(f.get('name') || '').trim()) issues.push('indiquez votre nom');
       if (String(f.get('phone') || '').replace(/\D/g, '').length < 10) issues.push('indiquez un numéro de téléphone pour vous joindre');
       errorEl.hidden = !issues.length;

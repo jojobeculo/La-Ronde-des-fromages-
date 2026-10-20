@@ -1398,3 +1398,67 @@ button.link { font: inherit; color: inherit; cursor: pointer; }
   .nav__logo-word { font-size: 21px; line-height: .98; }
   .nav__logo-word > span { display: block; }
 }
+
+/* ---------- Click & collect : calendrier et créneaux de retrait ---------- */
+.pickup__label { font: 400 12px/1.2 var(--font-badge); letter-spacing: .1em; text-transform: uppercase; }
+.pickup__label-day { text-transform: none; letter-spacing: 0; opacity: .7; }
+.cal {
+  padding: 14px 14px 12px; border: 1px solid var(--ink); border-radius: 16px; background: var(--cream);
+  font-family: var(--font-badge); font-variant-numeric: tabular-nums;
+}
+.cal__head { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 10px; }
+.cal__month { font: 400 26px/1 var(--font-display); letter-spacing: -0.01em; }
+.cal__nav {
+  display: grid; place-items: center; width: 36px; height: 36px; flex: none;
+  border: 1px solid var(--ink); border-radius: 50%; background: transparent; color: var(--ink); cursor: pointer;
+  transition: background-color .3s, color .3s, opacity .3s;
+}
+.cal__nav svg { width: 14px; height: 14px; }
+.cal__nav:hover:not(:disabled) { background: var(--ink); color: var(--cream); }
+.cal__nav:disabled { opacity: .22; cursor: default; }
+.cal__dow, .cal__grid { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 3px; }
+.cal__dow span { padding: 6px 0; text-align: center; font-size: 11px; letter-spacing: .12em; color: var(--ink-soft); }
+.cal__dow span:nth-child(n+6) { opacity: .55; }
+.cal__day {
+  position: relative; aspect-ratio: 1; max-height: 46px; width: 100%;
+  display: grid; place-items: center; border: 0; border-radius: 50%;
+  background: transparent; color: var(--ink); cursor: pointer;
+  font: 500 15px/1 var(--font-badge);
+  transition: background-color .25s, color .25s, transform .3s var(--ease-spring);
+}
+.cal__day:hover:not(:disabled):not(.is-selected) { background: var(--peach); transform: scale(1.06); }
+.cal__day:focus-visible { outline: 2px solid var(--ink); outline-offset: 1px; }
+.cal__day.is-off { color: rgba(60, 66, 46, .26); cursor: not-allowed; font-weight: 400; }
+.cal__day.is-off::before {
+  content: ''; position: absolute; left: 32%; right: 32%; top: 50%; height: 1px;
+  background: currentColor; transform: rotate(-35deg);
+}
+.cal__day.is-today::after {
+  content: ''; position: absolute; bottom: 14%; left: 50%; width: 4px; height: 4px; margin-left: -2px;
+  border-radius: 50%; background: currentColor; opacity: .6;
+}
+.cal__day.is-selected { background: var(--ink); color: var(--cream); animation: cal-pop .45s var(--ease-spring); }
+@keyframes cal-pop { 0% { transform: scale(.7); } 100% { transform: scale(1); } }
+.cal__grid.is-from-right { animation: cal-slide-r .45s var(--ease-out); }
+.cal__grid.is-from-left { animation: cal-slide-l .45s var(--ease-out); }
+@keyframes cal-slide-r { from { opacity: 0; transform: translateX(18px); } }
+@keyframes cal-slide-l { from { opacity: 0; transform: translateX(-18px); } }
+.cal__legend { display: flex; align-items: center; gap: 8px; margin-top: 10px; padding-top: 10px; border-top: 1px solid rgba(60, 66, 46, .15); font-size: 12px; color: var(--ink-soft); }
+.cal__legend-dot { position: relative; width: 14px; height: 14px; flex: none; }
+.cal__legend-dot::before { content: ''; position: absolute; left: 0; right: 0; top: 50%; height: 1px; background: rgba(60, 66, 46, .4); transform: rotate(-35deg); }
+
+.slots { display: grid; gap: 12px; }
+.slots__hint { margin-top: 2px; font-size: 12px; color: var(--ink-soft); }
+.slots__name { margin-bottom: 6px; font: 400 11px/1 var(--font-badge); letter-spacing: .12em; text-transform: uppercase; color: var(--ink-soft); }
+.slots__list { display: grid; grid-template-columns: repeat(auto-fill, minmax(68px, 1fr)); gap: 6px; }
+.slot {
+  height: 40px; padding: 0 6px; border: 1px solid rgba(60, 66, 46, .3); border-radius: 10px;
+  background: var(--cream); color: var(--ink); cursor: pointer; white-space: nowrap;
+  font: 500 14px/1 var(--font-badge); font-variant-numeric: tabular-nums;
+  animation: slot-in .4s var(--ease-out) both; animation-delay: calc(var(--i, 0) * 16ms);
+  transition: border-color .25s, background-color .25s, transform .3s var(--ease-spring);
+}
+.slot:hover { border-color: var(--ink); transform: translateY(-1px); }
+.slot:focus-visible { outline: 2px solid var(--ink); outline-offset: 1px; }
+.slot.is-selected { border-color: var(--ink); background: var(--mustard); font-weight: 700; }
+@keyframes slot-in { from { opacity: 0; transform: translateY(6px); } }

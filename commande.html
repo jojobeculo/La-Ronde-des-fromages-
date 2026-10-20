@@ -414,12 +414,24 @@
         <form class="pickup" data-pickup novalidate>
           <h3 class="pickup__title">Retrait en boutique</h3>
           <div class="pickup__row">
-            <label for="pickup-date">Jour</label>
-            <input type="date" id="pickup-date" name="date" required>
+            <span class="pickup__label" id="pickup-date-label">Jour de retrait</span>
+            <div class="cal" data-cal role="group" aria-labelledby="pickup-date-label">
+              <div class="cal__head">
+                <button class="cal__nav" type="button" data-cal-prev aria-label="Mois précédent"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3 5 8l5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+                <p class="cal__month" data-cal-month aria-live="polite"></p>
+                <button class="cal__nav" type="button" data-cal-next aria-label="Mois suivant"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="m6 3 5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+              </div>
+              <div class="cal__dow" aria-hidden="true"><span>L</span><span>M</span><span>M</span><span>J</span><span>V</span><span>S</span><span>D</span></div>
+              <div class="cal__grid" data-cal-grid></div>
+              <p class="cal__legend"><span class="cal__legend-dot"></span>Boutique fermée le dimanche et le lundi</p>
+            </div>
+            <input type="hidden" id="pickup-date" name="date">
           </div>
           <div class="pickup__row">
-            <label for="pickup-slot">Créneau</label>
-            <select id="pickup-slot" name="slot" required></select>
+            <span class="pickup__label" id="pickup-slot-label">Heure de retrait <span class="pickup__label-day" data-slot-day></span></span>
+            <div class="slots" data-slots role="group" aria-labelledby="pickup-slot-label"></div>
+            <p class="slots__hint">Créneaux de 30 minutes : votre commande vous attend au comptoir.</p>
+            <input type="hidden" id="pickup-slot" name="slot">
           </div>
           <div class="pickup__row">
             <label for="pickup-name">Nom</label>
