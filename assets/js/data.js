@@ -6,20 +6,20 @@
 window.LB_DATA = {
   shop: {
     name: 'La Ronde des Fromages',
-    address: '9, rue des Saulées',
-    city: '63400 Chamalières',
-    phone: '04 73 37 88 85',
-    phoneHref: 'tel:+33473378885',
+    address: 'Sous les Halles, place Saint-Pierre',
+    city: '63000 Clermont-Ferrand',
+    phone: '04 73 30 82 75',
+    phoneHref: 'tel:+33473308275',
     email: 'contact@example.com', // ✏️ À PERSONNALISER : l’adresse qui reçoit les commandes
-    maps: 'https://www.google.com/maps/search/?api=1&query=Le+Buron+9+rue+des+Saul%C3%A9es+63400+Chamali%C3%A8res',
-    // Horaires relevés sur PagesJaunes (à vérifier). 0 = dimanche. Plages « HH:MM-HH:MM ».
+    maps: 'https://www.google.com/maps/search/?api=1&query=La+Ronde+des+Fromages+Place+Saint-Pierre+63000+Clermont-Ferrand',
+    // Horaires relevés sur PagesJaunes et Mappy (à vérifier). 0 = dimanche. Plages « HH:MM-HH:MM ».
     hours: {
-      1: ['08:00-12:00', '15:00-19:00'],
-      2: ['07:00-12:30', '14:30-19:00'],
-      3: ['07:00-12:30', '14:30-19:00'],
-      4: ['07:00-12:30', '14:30-19:00'],
-      5: ['07:00-19:00'],
-      6: ['07:00-19:00'],
+      1: [],
+      2: ['09:00-13:00', '15:00-19:00'],
+      3: ['09:00-13:00', '15:00-19:00'],
+      4: ['09:00-13:00', '15:00-19:00'],
+      5: ['09:00-19:00'],
+      6: ['08:30-19:00'],
       0: [],
     },
   },

@@ -270,7 +270,7 @@
     const current = today.find(([a, b]) => minutes >= a && minutes < b);
     if (current) return { open: true, text: `Ouvert · jusqu’à ${fmtTime(current[1])}`, day };
     const later = today.find(([a]) => a > minutes);
-    if (later) return { open: false, text: `Fermé · réouverture à ${fmtTime(later[0])}`, day };
+    if (later) return { open: false, text: `Fermé · ${later === today[0] ? 'ouvre' : 'réouverture'} à ${fmtTime(later[0])}`, day };
     for (let i = 1; i <= 7; i++) {
       const d = (day + i) % 7;
       if ((schedule[d] || []).length) return { open: false, text: `Fermé · ouvre ${i === 1 ? 'demain' : DAY_NAMES[d]} à ${fmtTime(schedule[d][0][0])}`, day };
