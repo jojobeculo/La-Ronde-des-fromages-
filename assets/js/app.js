@@ -1,5 +1,5 @@
 /* =========================================================================
-   Au Buron — pages, fiches et commande
+   La Ronde des Fromages — pages, fiches et commande
    Transitions entre pages, horaires, fiches fromages, recettes et click & collect.
    Les données viennent de assets/js/data.js.
    ========================================================================= */
@@ -49,7 +49,7 @@
      ======================================================================= */
   const curtain = $('.curtain');
   const curtainTitle = $('[data-curtain-title]');
-  const PAGE_NAMES = { 'index.html': 'Au Buron', 'fromages.html': 'Nos fromages', 'recettes.html': 'Recettes', 'commande.html': 'Click & collect' };
+  const PAGE_NAMES = { 'index.html': 'La Ronde des Fromages', 'fromages.html': 'Nos fromages', 'recettes.html': 'Recettes', 'commande.html': 'Click & collect' };
   const pageOf = (url) => (url.pathname.split('/').pop() || 'index.html');
   const samePage = (url) => url.origin === location.origin && pageOf(url) === pageOf(location) && url.pathname.replace(/index\.html$/, '') === location.pathname.replace(/index\.html$/, '');
 
@@ -63,7 +63,7 @@
 
   const leave = (url, label) => {
     if (!curtain || reduceMotion) { location.href = url.href; return; }
-    if (curtainTitle) curtainTitle.textContent = label || PAGE_NAMES[pageOf(url)] || 'Au Buron';
+    if (curtainTitle) curtainTitle.textContent = label || PAGE_NAMES[pageOf(url)] || 'La Ronde des Fromages';
     root.classList.remove('is-arriving', 'curtain-out');
     root.classList.add('curtain-in');
     try { sessionStorage.setItem('lb-curtain', curtainTitle ? curtainTitle.textContent : '1'); } catch (e) { /* rien */ }
@@ -113,6 +113,46 @@
       location.reload();
     });
   });
+
+  /* =======================================================================
+     Retour haptique sur smartphone pour les éléments importants
+     Android : vibration courte. iPhone (Safari 18+) : le système vibre
+     quand on bascule un interrupteur <input switch>, on en actionne un caché.
+     ======================================================================= */
+  const touchDevice = window.matchMedia('(pointer: coarse)').matches;
+  const haptic = (() => {
+    if (!touchDevice) return () => {};
+    if (typeof navigator.vibrate === 'function') {
+      return (kind) => { try { navigator.vibrate(kind === 'success' ? [12, 60, 22] : 10); } catch (e) { /* rien */ } };
+    }
+    const label = document.createElement('label');
+    const input = document.createElement('input');
+    input.type = 'checkbox';
+    input.setAttribute('switch', '');
+    input.tabIndex = -1;
+    label.setAttribute('aria-hidden', 'true');
+    label.style.cssText = 'position:fixed;left:-200px;top:0;width:1px;height:1px;overflow:hidden;opacity:0;pointer-events:none';
+    label.appendChild(input);
+    // ce clic de service ne doit déclencher aucun autre comportement de la page
+    label.addEventListener('click', (e) => e.stopPropagation());
+    document.body.appendChild(label);
+    return (kind) => {
+      label.click();
+      if (kind === 'success') setTimeout(() => label.click(), 110);
+    };
+  })();
+  const HAPTIC = '.btn, [data-add], [data-hours-toggle], .nav__burger, .nav__links a, .menu a, .tab, .filter, .chip, .check, .step, [data-cut-step], .stepper button, [data-cheese-open], [data-recipe-open], .phone-order, .pill, .sheet__close, [data-remove], [data-motion-toggle]';
+  if (touchDevice) {
+    let lastHaptic = { el: null, t: 0 };
+    document.addEventListener('click', (e) => {
+      const el = e.target.closest(HAPTIC);
+      if (!el || el.disabled) return;
+      const now = performance.now();
+      if (lastHaptic.el === el && now - lastHaptic.t < 150) return; // clic sur un <label> puis sur sa case
+      lastHaptic = { el, t: now };
+      if (!el.matches('[data-add]')) haptic(); // l’ajout au panier vibre à l’arrivée dans le panier
+    }, true);
+  }
 
   /* =======================================================================
      Retours au clic : le bouton s’enfonce puis rebondit, une onde et des
@@ -245,6 +285,7 @@
     $$('[data-status-text]').forEach((el) => { el.textContent = s.text; });
     $$('[data-status-pill]').forEach((el) => el.classList.toggle('is-open', s.open));
     $$('[data-status-short]').forEach((el) => { el.textContent = s.open ? 'Ouvert' : 'Fermé'; });
+    $$('[data-status-detail]').forEach((el) => { el.textContent = s.text.split(' · ')[1] || ''; });
     $$('[data-shop-sign]').forEach((el) => { el.textContent = s.open ? 'OUVERT' : 'FERMÉ'; });
     const rows = DAY_ORDER.map((d) => `<tr${d === s.day ? ' class="is-today"' : ''}><th scope="row">${DAY_NAMES[d][0].toUpperCase()}${DAY_NAMES[d].slice(1)}</th><td>${hoursText(d)}</td></tr>`).join('');
     $$('[data-hours-table] tbody, table[data-hours] tbody').forEach((tb) => { tb.innerHTML = rows; });
@@ -788,7 +829,7 @@
       if (!btn) return;
       const kind = btn.dataset.add;
       const before = cart.length;
-      setTimeout(() => { if (cart.length > before) flyToCart(btn); });
+      setTimeout(() => { if (cart.length > before) { haptic('success'); flyToCart(btn); } });
       if (kind === 'plateau') {
         const p = plateau();
         if (!p.ids.length) return;

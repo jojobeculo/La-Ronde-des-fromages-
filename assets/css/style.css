@@ -1,5 +1,5 @@
 /* =========================================================================
-   Au Buron — Fromagerie artisanale, Clermont-Ferrand
+   La Ronde des Fromages — Fromagerie artisanale, Clermont-Ferrand
    Feuille de styles principale
    ========================================================================= */
 
@@ -41,7 +41,7 @@
   --radius-img: 20px;
   --radius-btn: 10px;
   --radius-pill: 9999px;
-  --header-h: 96px;
+  --header-h: 72px;
 
   --ease-out: cubic-bezier(.22, 1, .36, 1);
   --ease-spring: cubic-bezier(.34, 1.56, .64, 1);
@@ -253,23 +253,17 @@ html.lenis, html.lenis body { height: auto; }
   transition: transform .7s var(--ease-out);
 }
 .site-header.is-hidden { transform: translateY(-100%); }
-.ticker {
-  height: 32px; display: flex; align-items: center; overflow: hidden;
-  background: var(--ink); color: var(--cream);
-  font: 700 11.5px/1 var(--font-type); letter-spacing: .1em; text-transform: uppercase;
-}
-.marquee--ticker .marquee__group { gap: 18px; padding-right: 18px; }
-.marquee--ticker .ast { width: 10px; height: 10px; color: var(--mustard); }
 .nav {
   position: relative;
-  height: 64px; display: flex; align-items: center; gap: clamp(16px, 2vw, 32px);
+  height: 72px; display: flex; align-items: center; gap: clamp(16px, 2vw, 32px);
   padding: 0 var(--gutter);
   border-bottom: 1px solid transparent;
   transition: background-color .45s, border-color .45s;
 }
 .site-header.is-scrolled .nav { background: var(--cream); border-bottom-color: var(--ink); }
 .nav__logo { display: flex; align-items: center; gap: 12px; margin-right: auto; }
-.nav__logo-word { font: 400 34px/1 var(--font-display); letter-spacing: -0.02em; transition: font-style .3s; }
+.nav__logo-word { font: 400 30px/1 var(--font-display); letter-spacing: -0.02em; white-space: nowrap; transition: font-style .3s; }
+.nav__logo-word > span { font-style: italic; }
 .nav__logo:hover .nav__logo-word { font-style: italic; }
 .nav__logo-tag {
   padding-left: 12px; border-left: 1px solid var(--ink);
@@ -606,7 +600,7 @@ html.lenis, html.lenis body { height: auto; }
 .chip input:focus-visible + span { outline: 2px solid var(--ink); outline-offset: 2px; }
 .calc__result { display: grid; gap: 8px; padding-top: 16px; border-top: 1px solid var(--ink); font-size: 15px; line-height: 1.45; }
 .calc__weight strong { font: 400 1.9em/1 var(--font-display); letter-spacing: -0.02em; }
-.calc__cta { align-self: flex-start; }
+.calc__cta { align-self: flex-start; max-width: 100%; }
 .calc__note { font-size: 12px; line-height: 1.45; opacity: .8; }
 
 /* ---------- 7. Nuage de mots ---------- */
@@ -715,9 +709,13 @@ html.lenis, html.lenis body { height: auto; }
 .infos__text { display: flex; flex-direction: column; align-items: flex-start; gap: 28px; }
 .status {
   display: inline-flex; align-items: center; gap: 10px;
-  padding: 11px 18px; border: 1px solid var(--ink); border-radius: var(--radius-pill);
-  background: var(--cream);
-  font-size: 13.5px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase;
+  font: 500 15px/1.3 var(--font-badge); letter-spacing: .01em;
+}
+.status .status-dot { width: 7px; height: 7px; border: 0; background: #b9ad9c; position: relative; }
+.status.is-open .status-dot { background: #3d8b54; animation: none; }
+.status.is-open .status-dot::after {
+  content: ''; position: absolute; inset: 0; border-radius: 50%; background: #3d8b54;
+  animation: status-breathe 2.6s ease-out infinite;
 }
 .infos__cols { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: clamp(24px, 4vw, 56px); width: 100%; }
 .infos__address { font-style: normal; line-height: 1.65; }
@@ -760,7 +758,7 @@ html.lenis, html.lenis body { height: auto; }
 .footer__word {
   overflow: hidden;
   margin: 0 -0.02em;
-  font: 400 33vw/.78 var(--font-display); letter-spacing: -0.045em;
+  font: 400 12.6vw/.86 var(--font-display); letter-spacing: -0.04em;
   text-align: center; white-space: nowrap;
 }
 .footer__word .char { display: inline-block; }
@@ -846,10 +844,9 @@ html.lenis, html.lenis body { height: auto; }
 }
 
 @media (max-width: 900px) {
-  :root { --header-h: 88px; }
-  .ticker { height: 28px; }
-  .nav { height: 60px; }
-  .nav__logo-word { font-size: 30px; }
+  :root { --header-h: 64px; }
+  .nav { height: 64px; }
+  .nav__logo-word { font-size: 26px; }
 
   .manifesto__foot { grid-template-columns: 1fr; justify-items: center; }
   .facts { grid-template-columns: 1fr; width: 100%; }
@@ -1373,3 +1370,31 @@ button.link { font: inherit; color: inherit; cursor: pointer; }
 @media (max-width: 640px) { .recipe-view__credit { font-size: 10px; } }
 .sheet__photo--art { display: grid; place-items: center; min-height: 320px; }
 .sheet__photo--art .sheet__art { position: static; width: min(78%, 460px); }
+
+/* ---------- Bouton des horaires (en-tête) : discret, typographique ---------- */
+.status-btn {
+  position: relative; display: inline-flex; align-items: center; gap: 10px;
+  height: 40px; padding: 0 2px;
+  background: none; border: 0; color: var(--ink); cursor: pointer;
+  font: 500 13px/1 var(--font-badge); letter-spacing: .01em; white-space: nowrap;
+}
+.status-btn::after {
+  content: ''; position: absolute; left: 2px; right: 2px; bottom: 7px; height: 1px;
+  background: currentColor; transform: scaleX(0); transform-origin: 100% 50%;
+  transition: transform .5s var(--ease-out);
+}
+.status-btn:hover::after, .status-btn:focus-visible::after, .status-btn[aria-expanded="true"]::after { transform: scaleX(1); transform-origin: 0 50%; }
+.status-btn__dot { position: relative; width: 7px; height: 7px; flex: none; border-radius: 50%; background: #b9ad9c; }
+.status-btn.is-open .status-btn__dot { background: #3d8b54; }
+.status-btn.is-open .status-btn__dot::after {
+  content: ''; position: absolute; inset: 0; border-radius: 50%; background: #3d8b54;
+  animation: status-breathe 2.6s ease-out infinite;
+}
+@keyframes status-breathe { 0% { transform: scale(1); opacity: .45; } 70%, 100% { transform: scale(3.2); opacity: 0; } }
+.status-btn__detail { padding-left: 10px; border-left: 1px solid rgba(60, 66, 46, .25); color: var(--ink-soft); font-weight: 400; }
+.status-btn__detail:empty { display: none; }
+@media (max-width: 640px) {
+  .status-btn__detail { display: none; }
+  .nav__logo-word { font-size: 21px; line-height: .98; }
+  .nav__logo-word > span { display: block; }
+}

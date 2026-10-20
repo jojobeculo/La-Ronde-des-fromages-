@@ -1,4 +1,4 @@
-# Au Buron — fromagerie artisanale, Chamalières (Clermont-Ferrand)
+# La Ronde des Fromages — fromagerie artisanale, Chamalières (Clermont-Ferrand)
 
 Site vitrine de quatre pages, très animé, inspiré de l’univers éditorial de Graza : fonds crème, encre olive, bandeaux moutarde et vert prairie, grands titres serif condensés et texte « machine à écrire ».
 
@@ -34,7 +34,7 @@ Le passage d’une page à l’autre est animé par un rideau. La pastille « Ou
 
 Partout : défilement fluide, curseur personnalisé avec libellés (« Goûter », « Miam », « Entrer »), boutons magnétiques, textes qui roulent au survol, titres révélés ligne par ligne, grain imprimé.
 
-Les animations sont jouées sur tous les appareils, y compris quand l’ordinateur demande à réduire les animations (réglage fréquent sous Windows). Un bouton « Réduire les animations » dans le pied de page permet à chaque visiteur de les couper ; son choix est mémorisé. Le site reste entièrement lisible sans JavaScript.
+Les animations sont jouées sur tous les appareils, y compris quand l’ordinateur demande à réduire les animations (réglage fréquent sous Windows). Un bouton « Réduire les animations » dans le pied de page permet à chaque visiteur de les couper ; son choix est mémorisé. Le site reste entièrement lisible sans JavaScript. Sur smartphone, les boutons importants donnent un léger retour haptique (vibration sur Android, retour système sur iPhone avec Safari 18 ou plus récent).
 
 ## Voir le site en local
 
